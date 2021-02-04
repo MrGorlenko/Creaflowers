@@ -246,7 +246,7 @@ export default {
     &__item{
       position: relative;
       width:100%;
-      height: 138px;
+      min-height: 138px;
 
       background: red;
       margin-bottom: 32px;
