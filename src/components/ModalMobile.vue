@@ -17,7 +17,9 @@
 
       <h3 class='ModalMobile__title'>{{modal.title}}</h3>
       <p class='ModalMobile__description'>{{modal.description}}</p>
-      <div v-if="modal.price_size.length > 1" 
+      <div
+      @click='activateSelect()'
+       v-if="modal.price_size.length > 1" 
         class="ModalMobile__select">
         <p class='ModalMobile__selectSize'>
           {{modalSize}}
@@ -31,7 +33,8 @@
         </p>
         <label class='ModalMobile__label'>Выберите размер</label>
         <div class="ModalMobile__white"></div>
-        <select 
+        <!-- <select 
+        class='d-lg-block d-none'
         v-model="modalPrice">
         <option :value="null" disabled>Выберите размер</option>
           <option 
@@ -42,14 +45,30 @@
          >
             {{size[1]}} 
           </option>
-        </select>
+        </select> -->
       </div>
-      <button class='ModalMobile__addToBasket'
+
+      <button class=' ModalMobile__addToBasket'
       @click="closeModalMobile(); 
       addToBasket(modal.title, modalPrice, modal.img, modalSize)"
       >
         Добавить в корзину
       </button>
+    </div>
+    <div 
+    v-if='selectActive==true'
+    class="Select d-flex justify-content-center align-items-center">
+      <div class="Select__window">
+        <h3 class="Select__title">Size</h3>
+        <div
+        @click="togglePrice(size[0]); toggleSize(size[1]); deactivateSelect()"
+         v-for="size in modal.price_size" 
+          :key="size"
+         class='d-flex justify-content-between align-items-center'>
+          <p>{{size[1]}}</p> <p> {{size[0]}} руб.
+             <input :value='size' v-model='picked' class='Select__radio' type="radio">
+           </p> </div>
+      </div>
     </div>
   </div>
 </template>
@@ -87,10 +106,18 @@ export default {
       this.ADD_TO_BASKET(item)
       // alert('Спасибо! ' + title + ' добавлен в корзину в количестве ' + this.amount +' шт.')
     },
+    activateSelect(){
+      this.selectActive = true
+    },
+    deactivateSelect(){
+      this.selectActive = false
+    }
   },
   data(){
     return{
-      amount: 1
+      amount: 1,
+      picked: '',
+      selectActive: false
     }
   },
 }
@@ -98,6 +125,32 @@ export default {
 
 <style lang='scss'>
 @import '@/vendor/interface.scss';
+  .Select{
+    position: fixed;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 50;
+    &__window{
+      background: #FFFFFF;
+      box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.25);
+      border-radius: 12px;  
+      max-width: 342px;
+      width:100%;
+      min-height: 200px;
+      height: auto;
+      padding: 16px;
+      
+    }
+    &__title{
+      color: #000000;
+      font-weight: 600;
+      font-size: 24px;
+      line-height: 28px;
+    }
+  }
+ 
   .ModalMobile{
     @include ModalMobile;
     z-index: 100;
@@ -156,6 +209,7 @@ export default {
       height: 56px;
       margin-bottom: 16px;
       position: relative;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.25);
       @include Select;
       // content: url('../assets/arrow.svg');
       &::after{
