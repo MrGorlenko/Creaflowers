@@ -29,6 +29,7 @@
         <div class="Modal__white"></div>
         <select 
         v-model="modalPrice">
+        <option :value="null" disabled>Выберите размер</option>
           <option 
           class='Modal__option'
           @click="togglePrice(size[0]); toggleSize(size[1])" 
