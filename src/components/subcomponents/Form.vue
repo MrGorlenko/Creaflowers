@@ -479,8 +479,10 @@ export default {
       margin-bottom: 16px;
     }
     &__date, &__time{
-      background: none;
-      display: block;
+      // background: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
     &__date{
       width: 67%;
