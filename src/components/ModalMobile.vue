@@ -64,7 +64,7 @@
         @click="togglePrice(size[0]); toggleSize(size[1]); deactivateSelect()"
          v-for="size in modal.price_size" 
           :key="size"
-         class='d-flex justify-content-between align-items-center'>
+         class='d-flex justify-content-between align-items-center Select__item'>
           <p>{{size[1]}}</p> <p> {{size[0]}} руб.
              <input :value='size' v-model='picked' class='Select__radio' type="radio">
            </p> </div>
@@ -138,7 +138,7 @@ export default {
       border-radius: 12px;  
       max-width: 342px;
       width:100%;
-      min-height: 200px;
+      // min-height: 200px;
       height: auto;
       padding: 16px;
       
@@ -148,6 +148,10 @@ export default {
       font-weight: 600;
       font-size: 24px;
       line-height: 28px;
+    }
+    &__item{
+      box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.25);
+      padding: 20px 0;
     }
   }
  
