@@ -115,7 +115,7 @@ export default {
     &__toBasket, &__toModal{
       width: 18.7;
       position: absolute;
-      opacity: 1;
+      opacity: 0;
       transition: .3s ease;
       cursor: pointer;
       right: 5px;
