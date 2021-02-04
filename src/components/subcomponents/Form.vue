@@ -282,6 +282,7 @@ export default {
 
       result.push({TOTAL: this.Result})
       console.log(result)
+      alert('Спасибо! Покупка оформлена!')
     },
 
     // ВАЛИДАЦИЯ

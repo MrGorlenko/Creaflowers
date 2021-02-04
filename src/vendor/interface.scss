@@ -16,12 +16,14 @@ $mobileNavigatorHeight: 87px;
 }
 
 @mixin ModalMain{
-  height: 90%;
+  // height: 90%;
+  height: auto;
   width: 512px;
 }
 
 @mixin ModalAdded{
-  height: 60%;
+  // height: 60%;
+  height: auto;
   width: 350px;
 }
 

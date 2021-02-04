@@ -97,7 +97,7 @@ export default {
     addToBasket(title, price, pic, size){
       let item = [title, price, pic , this.amount, size]
       this.ADD_TO_BASKET(item)
-      alert('Спасибо! ' + title + ' добавлен в корзину в количестве ' + this.amount +' шт.')
+      // alert('Спасибо! ' + title + ' добавлен в корзину в количестве ' + this.amount +' шт.')
     },
     plusOne(){
       this.amount++;

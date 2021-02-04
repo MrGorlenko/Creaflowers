@@ -115,7 +115,7 @@ export default {
     &__toBasket, &__toModal{
       width: 18.7;
       position: absolute;
-      opacity: 0;
+      opacity: 1;
       transition: .3s ease;
       cursor: pointer;
       right: 5px;
@@ -126,6 +126,10 @@ export default {
     }
     &__toBasket{
       top: 14px;
+    }
+    &__toModal{
+      // top:
+      top: calc(40px + 20px)
     }
     &__img{
       width: 100%;
