@@ -153,3 +153,50 @@ $mobileNavigatorHeight: 87px;
   line-height: 24px;
 }
 
+@mixin ModalMobile{
+  position: fixed;
+  overflow-y: scroll;
+  left:0;
+  height: 100vh;
+  width: 100%;
+  background: linear-gradient(179.96deg, #E3D6D4 50%, #FAF1ED 99.96%);
+  border-radius: 16px 16px 0px 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-bottom: 75px;
+  transition: .5s ease;
+}
+
+@mixin ModalMobileClose{
+  height: 16px;
+  z-index: 2;
+  position: absolute;
+  top: 0;
+  left:0;
+  width: 100%;
+  div{
+    width: 36px;
+    height: 4px;
+    background: #FFFFFF;
+  }
+}
+
+@mixin ModalMobileImg{
+  width:100%;
+  border-radius: 16px 16px 0px 0px;
+  position: relative;
+  img{
+    width:100%;
+  }
+  &::after{
+    position: absolute;
+    bottom: 0;
+    left:0;
+    display: block;
+    width: 100%;
+    height: 50%;
+    content: '';
+    background: linear-gradient(180deg, rgba(228, 215, 215, 0) 66.12%, #E5D8D5 100%);
+  }
+}

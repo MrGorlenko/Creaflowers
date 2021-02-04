@@ -12,6 +12,9 @@ const Interface = {
     },
     ModalMobile : {
       isActive: false
+    },
+    ModalMobileAdded : {
+      isActive : false
     }
   },
   mutations: {
@@ -49,7 +52,15 @@ const Interface = {
 
     CLOSE_MODAL_MOBILE(state){
       state.ModalMobile.isActive = false
-    }
+    },
+    OPEN_ADDED_MODAL_MOBILE(state){
+      state.ModalMobileAdded.isActive = true
+    },
+
+    CLOSE_ADDED_MODAL_MOBILE(state){
+      state.ModalMobileAdded.isActive = false
+    },
+
   },
   actions: {
   },

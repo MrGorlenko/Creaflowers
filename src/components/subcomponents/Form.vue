@@ -432,7 +432,7 @@ export default {
         width: 100%;
       }
       &__submitHolder{
-        bottom: 45px;
+        bottom: 25px;
       }
       &__comments{
         margin-bottom: 97px;
@@ -440,6 +440,9 @@ export default {
       &__submit{
         width: calc(100% - 48px);
         margin-left: 0;
+      }
+      &__unknownAdress{
+        height: 25px;
       }
     }
   }

@@ -45,7 +45,6 @@ const Inventories = {
             img: "#",
             size: [ 'small', "large"],
             price: [800, 1500],
-            oldPrice: 1200
           },
           {
             id:3,
@@ -77,7 +76,6 @@ const Inventories = {
             img: "#",
             size: ["small","large"],
             price: [780, 1080],
-            oldPrice: 1000
           },
           {
             id:5,

@@ -5,11 +5,12 @@
     <BasketButton/>
     <Basket/>
     <ModalAdded/>
+    <ModileMobileDark/>
+    <ModalAddedMobile/>
     <div v-if='BasketActive==false'  class="base">
       <Goods/>
       <Footer/>
       <ModalMobile/>
-      <ModileMobileDark/>
     </div>
   </div>
 </template>
@@ -24,6 +25,7 @@ import Footer from '@/components/Footer.vue'
 
 import ModalMobile from '@/components/ModalMobile.vue'
 import ModileMobileDark from '@/components/subcomponents/ModalMobileDark.vue'
+import ModalAddedMobile from '@/components/ModalAddedMobile.vue'
 
 import BasketButton from '@/components/subcomponents/BasketButton.vue'
 import {mapState} from 'vuex'
@@ -39,6 +41,7 @@ export default {
 
     ModalMobile,
     ModileMobileDark,
+    ModalAddedMobile,
 
     BasketButton
   },

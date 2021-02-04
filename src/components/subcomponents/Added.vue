@@ -4,6 +4,7 @@
 <!-- :centeredSlides = true -->
 
     <swiper
+    class='d-none d-lg-block'
     :slides-per-view="2.5
     "
     :space-between="16"
@@ -23,6 +24,42 @@
         <p class="addedGoods__price">
           <span class="addedGoods__price_current">{{added.price}}</span>
           <span class="addedGoods__price_old">{{added.oldPrice}}</span>
+        </p> 
+      </swiper-slide>
+
+    </swiper>
+
+    <swiper
+    class='d-lg-none'
+    :slides-per-view="2.5
+    "
+    :space-between="16"
+    @swiper="onSwiper"
+    @slideChange="onSlideChange">
+
+      <swiper-slide
+      @click='addToModalAdded(added);openModalAddedMobile()'
+      v-for="(added) in addedGoods" :key='added'
+      class="addedGoods__item"
+      >
+        <img class='addedGoods__img'
+        src="https://ust-ilimsk.loveflowers.ru/wp-content/uploads/2018/04/rafaello-150.jpg" 
+        alt="">
+
+        <p class="addedGoods__title">{{added.title}}</p>
+        <p class="addedGoods__price ">
+          <span class="addedGoods__price_current flex-nowrap d-flex align-items-center flex-row">{{added.price}}  
+            <svg width="13" height="14" viewBox="0 0 13 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M7.5291 8.87355H0.772705V7.19883H7.50353C8.08307 7.19883 8.56248 7.10295 8.94174 6.91119C9.321 6.71517 9.60225 6.4467 9.78549 6.10579C9.96873 5.76062 10.0603 5.36431 10.0603 4.91687C10.0603 4.47369 9.96873 4.07738 9.78549 3.72795C9.60225 3.37852 9.32313 3.10366 8.94813 2.90338C8.57313 2.69883 8.10012 2.59656 7.5291 2.59656H4.74217V14H2.77342V0.909058H7.5291C8.522 0.909058 9.35083 1.08803 10.0156 1.44599C10.6846 1.80394 11.1853 2.28548 11.5177 2.89059C11.8544 3.49571 12.0227 4.169 12.0227 4.91048C12.0227 5.66048 11.8523 6.3359 11.5113 6.93676C11.1747 7.53335 10.6719 8.00636 10.0028 8.35579C9.33805 8.70096 8.51347 8.87355 7.5291 8.87355ZM7.62498 9.97298V11.6541H0.772705V9.97298H7.62498Z" fill="#181725"/>
+</svg>
+          </span>
+
+          <span class="addedGoods__price_old flex-nowrap d-flex align-items-center flex-row">{{added.oldPrice}}
+                        <svg width="13" height="14" viewBox="0 0 13 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M7.5291 8.87355H0.772705V7.19883H7.50353C8.08307 7.19883 8.56248 7.10295 8.94174 6.91119C9.321 6.71517 9.60225 6.4467 9.78549 6.10579C9.96873 5.76062 10.0603 5.36431 10.0603 4.91687C10.0603 4.47369 9.96873 4.07738 9.78549 3.72795C9.60225 3.37852 9.32313 3.10366 8.94813 2.90338C8.57313 2.69883 8.10012 2.59656 7.5291 2.59656H4.74217V14H2.77342V0.909058H7.5291C8.522 0.909058 9.35083 1.08803 10.0156 1.44599C10.6846 1.80394 11.1853 2.28548 11.5177 2.89059C11.8544 3.49571 12.0227 4.169 12.0227 4.91048C12.0227 5.66048 11.8523 6.3359 11.5113 6.93676C11.1747 7.53335 10.6719 8.00636 10.0028 8.35579C9.33805 8.70096 8.51347 8.87355 7.5291 8.87355ZM7.62498 9.97298V11.6541H0.772705V9.97298H7.62498Z" fill="#b2b2b2"/>
+</svg>
+        
+          </span>
         </p> 
       </swiper-slide>
 
@@ -76,7 +113,7 @@ export default {
   },
   methods: {
     ...mapMutations(['ADD_TO_MODAL_ADDED',
-     'OPEN_MODAL_ADDED']),
+     'OPEN_MODAL_ADDED', 'OPEN_ADDED_MODAL_MOBILE']),
     addToModalAdded(added_item){
       this.ADD_TO_MODAL_ADDED(added_item)
     },
@@ -90,6 +127,10 @@ export default {
     onSlideChange() {
       console.log('slide change');
     },
+
+    openModalAddedMobile(){
+      this.OPEN_ADDED_MODAL_MOBILE()
+    }
 
   }
 }
@@ -179,9 +220,26 @@ export default {
         width: 100%;
         margin-left: 0;
       }
+
     }
     .addedGoods{
       width: 100%;
+      &__price{
+        // width:50%;
+        display: flex;
+        
+        &_old, &_current{
+          width: 50%;
+          font-size: 11px;
+          svg{
+            width:8px;
+          }
+        }
+        &_old{
+          margin-left: 0;
+        }
+
+      }
     }
   }
 </style>

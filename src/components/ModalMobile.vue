@@ -23,8 +23,11 @@
           {{modalSize}}
         </p>
 
-        <p class='ModalMobile__selectPrice'>
-          {{modalPrice}} ₽
+        <p class='d-flex align-items-center ModalMobile__selectPrice'>
+          {{modalPrice}} 
+          <svg style='margin-left:2px;' width="13" height="14" viewBox="0 0 13 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M7.5291 8.87355H0.772705V7.19883H7.50353C8.08307 7.19883 8.56248 7.10295 8.94174 6.91119C9.321 6.71517 9.60225 6.4467 9.78549 6.10579C9.96873 5.76062 10.0603 5.36431 10.0603 4.91687C10.0603 4.47369 9.96873 4.07738 9.78549 3.72795C9.60225 3.37852 9.32313 3.10366 8.94813 2.90338C8.57313 2.69883 8.10012 2.59656 7.5291 2.59656H4.74217V14H2.77342V0.909058H7.5291C8.522 0.909058 9.35083 1.08803 10.0156 1.44599C10.6846 1.80394 11.1853 2.28548 11.5177 2.89059C11.8544 3.49571 12.0227 4.169 12.0227 4.91048C12.0227 5.66048 11.8523 6.3359 11.5113 6.93676C11.1747 7.53335 10.6719 8.00636 10.0028 8.35579C9.33805 8.70096 8.51347 8.87355 7.5291 8.87355ZM7.62498 9.97298V11.6541H0.772705V9.97298H7.62498Z" fill="#181725"/>
+          </svg>
         </p>
         <label class='ModalMobile__label'>Выберите размер</label>
         <div class="ModalMobile__white"></div>
@@ -81,7 +84,7 @@ export default {
     addToBasket(title, price, pic, size){
       let item = [title, price, pic , this.amount, size]
       this.ADD_TO_BASKET(item)
-      alert('Спасибо! ' + title + ' добавлен в корзину в количестве ' + this.amount +' шт.')
+      // alert('Спасибо! ' + title + ' добавлен в корзину в количестве ' + this.amount +' шт.')
     },
   },
   data(){
@@ -95,19 +98,8 @@ export default {
 <style lang='scss'>
 @import '@/vendor/interface.scss';
   .ModalMobile{
-    position: fixed;
-    overflow-y: scroll;
-    left:0;
-    height: 100vh;
-    width: 100%;
-    background: linear-gradient(179.96deg, #E3D6D4 50%, #FAF1ED 99.96%);
+    @include ModalMobile;
     z-index: 100;
-    border-radius: 16px 16px 0px 0px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding-bottom: 75px;
-    transition: .5s ease;
     &_passive{
       bottom: -100vh;
     }
@@ -115,35 +107,10 @@ export default {
       bottom: -5vh;
     }
     &__close{
-      height: 16px;
-      z-index: 2;
-      position: absolute;
-      top: 0;
-      left:0;
-      width: 100%;
-      div{
-        width: 36px;
-        height: 4px;
-        background: #FFFFFF;
-      }
+      @include ModalMobileClose;
     }
     &__img{
-      width:100%;
-      border-radius: 16px 16px 0px 0px;
-      position: relative;
-      img{
-        width:100%;
-      }
-      &::after{
-        position: absolute;
-        bottom: 0;
-        left:0;
-        display: block;
-        width: 100%;
-        height: 50%;
-        content: '';
-        background: linear-gradient(180deg, rgba(228, 215, 215, 0) 66.12%, #E5D8D5 100%);
-      }
+      @include ModalMobileImg;
     }
     &__title{
       font-weight: bold;

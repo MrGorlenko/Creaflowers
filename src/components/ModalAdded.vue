@@ -83,7 +83,7 @@ export default {
 <style lang='scss'>
 @import '@/vendor/interface.scss';
   .modalAdded{
-    z-index: 55;
+    z-index: 155;
     @include ModalBase;
     @include ModalAdded;
 
