@@ -165,12 +165,6 @@
         :value='address'
         :value1='address'
         ></SelectItem>
-        <!-- <SelectItem @click='orderForMe(); deactivateOrderModal()'
-         value='ForMe' value1='Заказ себе'>
-        </SelectItem>
-        <SelectItem @click='orderForSomeone(); deactivateOrderModal()'
-         value='ForSomeone' value1='Заказ кому-то'>
-        </SelectItem> -->
       </div>
     </div>
 
@@ -480,12 +474,12 @@ export default {
       border: 1px solid #E1E1E1;
       margin-bottom: 16px;
     }
-    &__date, &__time{
+    // &__date, &__time{
       // background: none;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
+      // display: flex;
+      // justify-content: center;
+      // align-items: center;
+    // }
     &__date{
       width: 67%;
     }

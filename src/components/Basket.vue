@@ -244,6 +244,14 @@ export default {
       width: calc(100% - 25px);
       margin-left: 25px;
     }
+    &__button{
+      width: 30px;
+      height: 30px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
     &__basketTitle{
       margin-bottom: 38px;
     }
