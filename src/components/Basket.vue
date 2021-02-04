@@ -243,6 +243,7 @@ export default {
       margin-bottom: 38px;
     }
     &__item{
+      position: relative;
       width:100%;
       height: 138px;
     }
