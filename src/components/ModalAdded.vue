@@ -1,0 +1,121 @@
+<template>
+  <div v-if='modalAddedActive == true' class="modalAdded__wrapper 
+  d-flex justify-content-center align-items-center">
+    <!-- Название Доп Товара {{modalAdded[0]}}
+    Цена {{modalAdded[2]}} -->
+    <div class="modalAdded">
+      <img @click='closeModalAdded()' src="@/assets/Close.svg" alt="" class="modalAdded__close">
+      <img class='modalAdded__img'
+        src="https://ust-ilimsk.loveflowers.ru/wp-content/uploads/2018/04/rafaello-150.jpg" 
+        alt="">
+      <div>
+        <p class='modalAdded__title'>{{modalAdded.title}}</p>
+        <!-- <p>Цена: {{modalAdded.price}}</p> -->
+        <div class='d-flex justify-content-between'>
+        <p class='modalAdded__counter d-flex 
+        flex-row justify-content-between align-items-center'>
+          <button class='modalAdded__button' v-if="amount>1"
+          @click='minusOne()'>-</button>
+          <button class='modalAdded__button' v-else disabled>-</button>
+          <!-- <button class='Modal__button' v-else disabled>-</button> -->
+            <!-- {{amount}} -->
+            {{amount}}
+          <button class='modalAdded__button' @click='plusOne()'>+</button>
+        </p>
+    
+        <div class="modalAdded__price d-flex align-items-center justify-content-end">         
+          <!-- {{modalPrice*amount}} ₽ -->
+          {{modalAdded.price*amount}}
+        </div>
+      </div>
+
+        <button class='modalAdded__addToBasket'
+          @click='addToBasket(modalAdded.title, modalAdded.price); 
+          closeModalAdded()'>
+          Добавить в корзину
+        </button>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+import {mapGetters, mapActions, mapState, mapMutations} from 'vuex'
+// import Added from '@/components/subcomponents/Added.vue'
+export default {
+  name: "modalAdded",
+  computed: {
+    ...mapState({
+      categories: state => state.Inventories.goods,
+      modal: state => state.Inventories.modal,
+      modalPrice: state => state.Inventories.modalPrice,
+      modalAdded: state=> state.Inventories.modalAdded,
+      modalAddedActive: state => state.Interface.ModalAdded.isActive
+    }),
+  },
+  methods: {
+    ...mapMutations(['ADD_TO_BASKET_ADDED', 'CLOSE_MODAL_ADDED']),
+    addToBasket(item, price){
+      let added = [item, price * this.amount ,null,  this.amount]
+      this.ADD_TO_BASKET_ADDED(added)
+    },
+    closeModalAdded(){
+      this.CLOSE_MODAL_ADDED()
+    },
+    plusOne(){
+      this.amount += 1
+    },
+    minusOne(){
+      this.amount -= 1
+    }
+  },
+
+  data(){
+    return {
+      amount: 1
+    }
+  }
+
+
+}
+</script>
+
+<style lang='scss'>
+@import '@/vendor/interface.scss';
+  .modalAdded{
+    z-index: 55;
+    @include ModalBase;
+    @include ModalAdded;
+
+    &__wrapper{
+      @include ModalWrapper;
+      z-index: 54;
+    }
+    &__close{
+      @include ModalClose;
+    }
+    &__img{
+      @include ModalImg;
+    }
+    &__title{
+      @include ModalTitle;
+    }
+    &__counter, &__price{
+      @include ModalCounterPrise;
+    }
+    &__counter{
+      width: 40%;
+    }
+    &__price{
+      width: 50%;
+    }
+    &__button{
+      @include ModalButton;
+    }
+    &__addToBasket{
+      width: 100%;
+      margin-top: 25px;
+      @include SubmitButton;
+    }
+  }
+</style>

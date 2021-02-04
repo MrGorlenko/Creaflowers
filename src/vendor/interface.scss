@@ -1,0 +1,153 @@
+$sideBarWidth: 260px;
+$goodsWidthDesctop: 23%;
+$width100: 100%;
+$innerBasketWidth: 540px;
+
+
+$sideBarWidthMobile: 0;
+$mobileNavigatorHeight: 87px;
+
+
+@mixin ModalBase {
+  background: #fff;
+  padding: 30px;
+  position: relative;
+  border-radius: 12px;
+}
+
+@mixin ModalMain{
+  height: 90%;
+  width: 512px;
+}
+
+@mixin ModalAdded{
+  height: 60%;
+  width: 350px;
+}
+
+@mixin ModalWrapper{
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  background-color: rgba(0,0,0,0.5);
+}
+
+@mixin ModalImg{
+  width: 100%;
+  height: 48%;
+  object-fit: contain;
+}
+
+@mixin ModalTitle{
+  font-weight: 600;
+  font-size: 28px;
+  line-height: 40px;
+  color: #000;
+}
+
+@mixin ModalCounterPrise{
+  background: #F5F5F5;
+  border-radius: 6px;
+  padding: 14px;
+  margin-bottom: 0;
+  font-weight: bold;
+}
+
+@mixin ModalButton{
+  background: none;
+  border-radius: 100px;
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 23px;
+  height: 23px;
+  font-weight: bold;
+}
+
+@mixin SubmitButton{
+  padding: 14px;
+  background-color:#6709DE;
+  color: #fff;
+  border-radius: 12px;
+  border: none;
+  outline: none !important;
+  transition: background .3s ease;
+  &:hover{
+    background: #530ACA;
+  }
+}
+
+@mixin ModalClose{
+  position: absolute;
+  top: 0;
+  right: calc( ( -48px - 12px ) );
+  width: 48px;
+  height: 48px;
+  cursor: pointer;
+  border-radius: 100px ;
+  transition: box-shadow .3s ease;
+  &:hover{
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.25);
+  }
+}
+
+@mixin Select{
+  position: relative;
+  select{
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    outline: none !important;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    -webkit-appearance: none;/* Chrome */
+    -moz-appearance: none;/* Firefox */
+    appearance: none;/* убираем дефолнтные стрелочки */
+    @media screen and (max-width:992px){
+      background: none;
+    }
+  }
+  &::after{
+    position: absolute;
+    // content: url('../assets/arrow.svg');
+    display: block;
+    width: 10px;
+    height: 6px;
+    top: 23%;
+    right: 20px;
+    background: none;
+  }
+
+}
+
+@mixin SelectLabel{
+  position: absolute;
+  top: 5px;
+  left: 16px;
+  color: #A4A4A4;
+  font-size: 13px;
+  line-height: 20px;
+}
+
+@mixin SelectWhite{
+  position: absolute;
+  width:50%;
+  height: 50%;
+  top: 13px;
+  left: 3px;
+  border-radius: 10px;
+  z-index: 10;
+  background-color: #fff;
+  @media screen and (max-width:992px){
+    background: #ede2df;
+  }
+}
+
+@mixin SelectSizePrice{
+  position: absolute;
+  color: #000000;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+}
+
