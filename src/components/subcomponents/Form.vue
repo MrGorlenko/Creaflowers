@@ -4,18 +4,73 @@
     <!-- <select name="" id="">
       <option value="">Apple Pay</option>
     </select> -->
-    <div class="Form__select">
+    <div class="d-lg-block d-none Form__select">
       <select class='Form__input' name="" id="">
         <option @click='choseCarrier()' value="carrier">Доставка курьером</option>
         <option @click='chosePickup()' value="pickup">Самовывоз</option>
       </select>
     </div>
-    <div class="Form__select">
+
+      <div
+      @click='activateDeliveryModal()'
+        class="Form__select d-lg-none ModalMobile__select">
+        <p class='ModalMobile__selectSize'>
+          {{ReceiveType}}
+        </p>
+        <label class='ModalMobile__label'>Выберите способ доставки</label>
+      </div>
+
+<!-- Выбор доставки -->
+  <div 
+    v-if='DeliveryModal==true'
+    class="Select d-flex justify-content-center align-items-center">
+      <div class="Select__window">
+        <h3 class="Select__title">Способ доставки</h3>
+        <SelectItem @click='choseCarrier(); deactivateDelivaryModal()' value='carrier' value1='Доставка курьером'>
+        </SelectItem>
+
+        <SelectItem @click='chosePickup(); deactivateDelivaryModal();setPickUpAddress()' value='pickup' value1='Самовывоз'>
+        </SelectItem>
+      </div>
+    </div>
+<!-- Выбор доставки -->
+
+
+    <div class="d-lg-block d-none Form__select">
       <select class='Form__input' name="" id="">
         <option @click='orderForMe()' value="">Заказ себе</option>
         <option @click='orderForSomeone()' value="">Заказ кому-то</option>
       </select>
     </div>
+
+
+    <div
+      @click='activateOrderModal()'
+        class="Form__select d-lg-none ModalMobile__select">
+        <p class='ModalMobile__selectSize'>
+          {{OrderType}}
+        </p>
+        <label class='ModalMobile__label'>Выберите, для кого заказ? </label>
+      </div>
+
+
+
+
+<!-- КОМУ -->
+  <div 
+    v-if='OrderModal==true'
+    class="Select d-flex justify-content-center align-items-center">
+      <div class="Select__window">
+        <h3 class="Select__title">Способ доставки</h3>
+        <SelectItem @click='orderForMe(); deactivateOrderModal()'
+         value='ForMe' value1='Заказ себе'>
+        </SelectItem>
+        <SelectItem @click='orderForSomeone(); deactivateOrderModal()'
+         value='ForSomeone' value1='Заказ кому-то'>
+        </SelectItem>
+      </div>
+    </div>
+<!-- КОМУ -->
 
     <input class='Form__input '
      v-model='OrdererName' 
@@ -23,16 +78,12 @@
      @input="getTheOrdererName(OrdererName);"
      placeholder="Ваше имя">
 
-    
-
     <input class='Form__input'
     v-model='ReceiverName' 
     v-if='Present'  
     type="text"
     @input="getTheReceiverName(ReceiverName)"
     placeholder="Кому">
-
-
 
     <div class='phone Form__phone d-flex align-items-center'>
       <p class='Form__numberHolder'>+7</p>
@@ -42,9 +93,6 @@
       maxlength=14
       @input="acceptNumber(); getTheOrdererNumber(phone)">
     </div>
-
-    
-
 
      <div v-if='Present && Carrier'
       class='Form__phone phone d-flex align-items-center'>
@@ -79,8 +127,8 @@
       
      </div>
      <div  v-else>
-       <p style='text-align:start'>Выберите адрес самовывоза</p>
-      <div class="Form__select">
+       <p class='d-lg-block d-none ' style='text-align:start'>Выберите адрес самовывоза</p>
+      <div class="d-lg-block d-none Form__select">
       <select class='Form__input'
        placeholder=" Адрес"  v-model="address"  name="" id="">
        <!-- <option disabled>Выберите Адрес</option> -->
@@ -91,7 +139,38 @@
        </option>
      </select>
      </div>
+
+          <div
+      @click='activatePickUpModal()'
+        class="Form__select d-lg-none ModalMobile__select">
+        <p class='ModalMobile__selectSize'>
+          {{PickUpAdress}}
+        </p>
+        <label class='ModalMobile__label'>Выберите адрес самовывоза</label>
+      </div>
+
      </div>
+
+    <div 
+    v-if='PickUpModal==true'
+    class="Select d-flex justify-content-center align-items-center">
+      <div class="Select__window">
+        <h3 class="Select__title">Способ доставки</h3>
+        <SelectItem
+        @click='getTheAddress(address);deactivatePickUpModal();selectTheAddress(address) '
+        v-for='address in AdressOfPickUp' 
+       :key='address'
+        :value='address'
+        :value1='address'
+        ></SelectItem>
+        <!-- <SelectItem @click='orderForMe(); deactivateOrderModal()'
+         value='ForMe' value1='Заказ себе'>
+        </SelectItem>
+        <SelectItem @click='orderForSomeone(); deactivateOrderModal()'
+         value='ForSomeone' value1='Заказ кому-то'>
+        </SelectItem> -->
+      </div>
+    </div>
 
      <!-- Адрес {{AddressOfDelivery}} -->
      
@@ -114,10 +193,14 @@
 </template>
 
 <script>
+import SelectItem from '@/components/subcomponents/SelectItem.vue'
 import {mapGetters, mapActions, mapState, mapMutations} from 'vuex'
 export default {
   name: 'Form',
   el: '#form',
+  components:{
+    SelectItem
+  },
     computed: {
     ...mapState({
       Result: state => state.Inventories.finalPrice,
@@ -130,22 +213,61 @@ export default {
     }),
   },
   methods: {
+    selectTheAddress(address){
+      this.PickUpAdress = address
+    },
+    
+    activatePickUpModal(){
+      this.PickUpModal = true
+    },
+
+    deactivatePickUpModal(){
+      this.PickUpModal = false
+    },
+
+
+    activateDeliveryModal(){
+      this.DeliveryModal = true
+    },
+
+    deactivateDelivaryModal(){
+      this.DeliveryModal = false
+    },
+
+
+    activateOrderModal(){
+      this.OrderModal = true
+    },
+
+    deactivateOrderModal(){
+      this.OrderModal = false
+    },
+
     ...mapMutations(['CHOSE_CARRIER', 'CHOSE_PICKUP',
      'ORDER_FOR_ME', 'ORDER_FOR_SOMEONE', 'ORDERER_NAME',
       'RECEIVER_NAME', 'ORDERER_PHONE', 'RECEIVER_PHONE',
       'SET_DATE', 'SET_TIME', 'GET_ADDRESS', 'GET_COMMENT',
-      'TOTAL_VALIDATION', 'RECEIVER_NON_SELECT', 'RECEIVER_SELECT']),
+      'TOTAL_VALIDATION', 'RECEIVER_NON_SELECT', 'RECEIVER_SELECT',
+      'SET_ADDRESS_OF_PICK_UP']),
     choseCarrier(){
       this.CHOSE_CARRIER()
+      this.ReceiveType = 'Курьером'
     },
     chosePickup(){
-      this.CHOSE_PICKUP()
+      this.CHOSE_PICKUP(),
+      this.ReceiveType = 'Самовывоз'
+    },
+    setPickUpAddress(){
+      // this.SET_ADDRESS_OF_PICK_UP()
+      this.PickUpAdress = this.AdressOfPickUp[0]
     },
     orderForMe(){
       this.ORDER_FOR_ME()
+      this.OrderType = 'Заказ себе'
     },
     orderForSomeone(){
       this.ORDER_FOR_SOMEONE()
+      this.OrderType = 'Заказ кому-то'
     },
     formatThePhone(e){
       var key = e.key
@@ -296,9 +418,18 @@ export default {
     	var x = this.receiverPhone.replace(/\D/g, '').match(/(\d{0,3})(\d{0,3})(\d{0,4})/);
       this.receiverPhone = !x[2] ? x[1] :  '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '');
     }
+
+
+
   },
   data(){
     return{
+      PickUpAdress: '',
+      OrderType: 'Заказ себе',
+      ReceiveType: 'Курьером',
+      PickUpModal: false,
+      OrderModal: false,
+      DeliveryModal: false,
       OrdererName: '',
       ReceiverName: '',
       phone: '',
@@ -346,6 +477,10 @@ export default {
       border-radius: 6px;
       border: 1px solid #E1E1E1;
       margin-bottom: 16px;
+    }
+    &__date, &__time{
+      background: none;
+      display: block;
     }
     &__date{
       width: 67%;

@@ -32,20 +32,6 @@
           </svg>
         </p>
         <label class='ModalMobile__label'>Выберите размер</label>
-        <div class="ModalMobile__white"></div>
-        <!-- <select 
-        class='d-lg-block d-none'
-        v-model="modalPrice">
-        <option :value="null" disabled>Выберите размер</option>
-          <option 
-          class='ModalMobile__option'
-          @click="togglePrice(size[0]); toggleSize(size[1])" 
-          v-for="size in modal.price_size" 
-          :key="size" :value="size[1]"
-         >
-            {{size[1]}} 
-          </option>
-        </select> -->
       </div>
 
       <button class=' ModalMobile__addToBasket'
@@ -55,29 +41,36 @@
         Добавить в корзину
       </button>
     </div>
+
     <div 
     v-if='selectActive==true'
     class="Select d-flex justify-content-center align-items-center">
       <div class="Select__window">
         <h3 class="Select__title">Size</h3>
-        <div
-        @click="togglePrice(size[0]); toggleSize(size[1]); deactivateSelect()"
-         v-for="size in modal.price_size" 
+        <SelectItem
+          v-for="size in modal.price_size" 
           :key="size"
-         class='d-flex justify-content-between align-items-center Select__item'>
-          <p>{{size[1]}}</p> <p> {{size[0]}} руб.
-             <input :value='size' v-model='picked' class='Select__radio' type="radio">
-           </p> </div>
+          :value1='size[1]'
+          :value2='size[0]'
+          :value='size'
+          :model='picked'
+          :currency='"руб."'
+           @click="togglePrice(size[0]); toggleSize(size[1]); deactivateSelect()"
+            > </SelectItem>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import SelectItem from '@/components/subcomponents/SelectItem.vue'
+import Select from '@/components/Select.vue'
 import {mapState, mapMutations} from 'vuex'
 export default {
   name: "ModalMobile",
   components: {
+    Select,
+    SelectItem
   },
   computed: {
     ...mapState({
@@ -125,35 +118,6 @@ export default {
 
 <style lang='scss'>
 @import '@/vendor/interface.scss';
-  .Select{
-    position: fixed;
-    top:0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    z-index: 50;
-    &__window{
-      background: #FFFFFF;
-      box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.25);
-      border-radius: 12px;  
-      max-width: 342px;
-      width:100%;
-      // min-height: 200px;
-      height: auto;
-      padding: 16px;
-      
-    }
-    &__title{
-      color: #000000;
-      font-weight: 600;
-      font-size: 24px;
-      line-height: 28px;
-    }
-    &__item{
-      box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.25);
-      padding: 20px 0;
-    }
-  }
  
   .ModalMobile{
     @include ModalMobile;

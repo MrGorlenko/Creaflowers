@@ -197,6 +197,11 @@ export default {
     font-weight: 600;
     font-size: 20px;
     color: #000000;
+
+    svg{
+      min-height: 30px;
+      height: 30px;
+    }
   }
   &__size{
     color: #7C7C7C;

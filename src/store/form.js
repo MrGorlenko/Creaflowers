@@ -13,7 +13,8 @@ const Form = {
     addressOfPickUp: [
       'address1', 
       'address2'
-    ]
+    ],
+    PickUpAdress : ''
     // validName: false,
     // // validReceiverName: true,
     // validPhone: false,
@@ -65,8 +66,13 @@ const Form = {
       state.comment = comment
     },
 
+    SET_ADDRESS_OF_PICK_UP(state){
+      state.PickUpAdress = state.addressOfPickUp[0]
+    }
+
   },
   actions: {
+
   },
   getters: {
   },
