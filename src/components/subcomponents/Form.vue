@@ -26,10 +26,12 @@
     class="Select d-flex justify-content-center align-items-center">
       <div class="Select__window">
         <h3 class="Select__title">Способ доставки</h3>
-        <SelectItem @click='choseCarrier(); deactivateDelivaryModal()' value='carrier' value1='Доставка курьером'>
+        <SelectItem @click='choseCarrier(); 
+        deactivateDelivaryModal()' value='carrier' value1='Доставка курьером'>
         </SelectItem>
 
-        <SelectItem @click='chosePickup(); deactivateDelivaryModal();setPickUpAddress()' value='pickup' value1='Самовывоз'>
+        <SelectItem @click='chosePickup(); 
+        deactivateDelivaryModal();setPickUpAddress()' value='pickup' value1='Самовывоз'>
         </SelectItem>
       </div>
     </div>
@@ -61,7 +63,7 @@
     v-if='OrderModal==true'
     class="Select d-flex justify-content-center align-items-center">
       <div class="Select__window">
-        <h3 class="Select__title">Способ доставки</h3>
+        <h3 class="Select__title">Получатель</h3>
         <SelectItem @click='orderForMe(); deactivateOrderModal()'
          value='ForMe' value1='Заказ себе'>
         </SelectItem>
@@ -155,7 +157,7 @@
     v-if='PickUpModal==true'
     class="Select d-flex justify-content-center align-items-center">
       <div class="Select__window">
-        <h3 class="Select__title">Способ доставки</h3>
+        <h3 class="Select__title">Адрес самовывоза</h3>
         <SelectItem
         @click='getTheAddress(address);deactivatePickUpModal();selectTheAddress(address) '
         v-for='address in AdressOfPickUp' 
