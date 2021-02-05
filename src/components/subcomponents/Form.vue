@@ -106,7 +106,10 @@
 
 
     <div class='phone Form__input d-flex align-items-end'>
-      <p class='Form__numberHolder'>+7</p>
+      <div class='Form__numberHolder d-flex justify-content-center
+      align-items-center'>
+        <span class='d-block'>+7</span>
+      </div>
 
 
       <div class="CustomInput d-flex flex-column justify-content-end">
@@ -701,6 +704,7 @@ export default {
       padding-bottom: 0px;
       position: absolute;
       width: 25px;
+      min-height: 27px;
       // background: #BDBDBD;
       margin-bottom: 0;
       color: #000;
