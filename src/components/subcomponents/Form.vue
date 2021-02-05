@@ -105,11 +105,11 @@
 
 
 
-    <div class='phone d-flex align-items-center'>
+    <div class='phone Form__input d-flex align-items-end'>
       <p class='Form__numberHolder'>+7</p>
 
 
-      <div class="Form__input CustomInput d-flex flex-column justify-content-end">
+      <div class="CustomInput d-flex flex-column justify-content-end">
       <label
       :class="{'CustomInput__label_focused': phoneInput==true,
       'CustomInput__label_blur': phoneInput==false}"
@@ -127,10 +127,10 @@
     </div>
 
      <div v-if='Present && Carrier'
-      class='phone d-flex align-items-center'>
+      class='phone Form__input d-flex align-items-end'>
       <p class='Form__numberHolder'>+7</p>
 
-      <div class="Form__input CustomInput d-flex flex-column justify-content-end">
+      <div class="CustomInput d-flex flex-column justify-content-end">
       <label
       :class="{'CustomInput__label_focused': receiverPhoneInput==true,
       'CustomInput__label_blur': receiverPhoneInput==false}"
@@ -601,11 +601,11 @@ export default {
     span{
       background: none;
     }
-    .Form__input label{
+    label{
       left: 25px;
       line-height: 17px;
     }
-    .Form__input input{
+    input{
       padding-left: 25px;
     }
   }
@@ -697,8 +697,8 @@ export default {
     &__numberHolder{
       display: flex;
       align-items: end;
-      min-height: 48px;
-      padding-bottom: 6px;
+      // min-height: 48px;
+      padding-bottom: 0px;
       position: absolute;
       width: 25px;
       // background: #BDBDBD;
