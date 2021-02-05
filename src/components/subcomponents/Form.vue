@@ -150,9 +150,7 @@
 
     </div>
 
-    <div class='d-flex justify-content-between'>
-      <div class="Form__customData"></div>
-
+    <div class='d-none d-lg-flex justify-content-between'>
       <input 
       class='Form__date'
       @input='setTheDate(date)' 
@@ -162,6 +160,41 @@
       class='Form__time'
       @input='setTheTime(time)'  
       type="time" v-model='time'>
+    </div>
+
+    <div class='Form__input d-flex d-lg-none justify-content-between CustomInput__dateTime'>
+      <div class=" CustomInput d-flex flex-column justify-content-end">
+        <label
+        :class="{'CustomInput__label_focused': dateInput==true,
+        'CustomInput__label_blur': dateInput==false}"
+        class='CustomInput__label' for="">Дата</label>
+        <label class='CustomInput__date' v-if='date!=""' for="">{{date}}</label>
+        <input 
+          @focus='onFocusDate'
+          @blur="onBlurDate"
+          v-model='date' 
+          type="date"
+          @input="setTheDate(date);"
+          class='CustomInput__input'
+        >
+      </div>
+
+      <div class=" CustomInput d-flex flex-column justify-content-end">
+        <label
+        :class="{'CustomInput__label_focused': timeInput==true,
+        'CustomInput__label_blur': timeInput==false}"
+        class='CustomInput__label' for="">Время</label>
+        <label class='CustomInput__date' v-if='time!=""' for="">{{time}}</label>
+        <input 
+          @focus='onFocusTime'
+          @blur="onBlurTime"
+          v-model='time' 
+          type="time"
+          @input="setTheTime(time);"
+          class='CustomInput__input'
+        >
+      </div>
+      
     </div>
 
      <div v-if='Carrier'>
@@ -359,6 +392,24 @@ export default {
         this.addressInput = false
     },
 
+    onFocusDate(){
+      this.dateInput = true
+    },
+
+    onBlurDate(){
+      if (this.date == '')
+        this.dateInput = false
+    },
+
+    onFocusTime(){
+      this.timeInput = true
+    },
+
+    onBlurTime(){
+      if (this.time == '')
+        this.timeInput = false
+    },
+
     choseCarrier(){
       this.CHOSE_CARRIER()
       this.ReceiveType = 'Курьером'
@@ -534,6 +585,8 @@ export default {
   },
   data(){
     return{
+      timeInput: false,
+      dateInput: false,
       addressInput: false,
       phoneInput: false,
       receiverPhoneInput: false,
@@ -568,12 +621,39 @@ export default {
 <style lang='scss'>
 @import '@/vendor/interface.scss';
 
+.CustomInput__dateTime{
+  .CustomInput:first-child{
+    width:70%;
+  }
+  .CustomInput:last-child{
+    width:20%;
+  }
+}
 
 .CustomInput{
   position: relative;
   width: 100%;
   height: 56px;
   min-height: 56px;
+  &__dateTime{
+    input{
+      // background: #fff;
+      color: #fff;
+    }
+    // label{
+    //   z-index: -1;
+    // }
+  }
+  &__date{
+    position: absolute;
+    transition: .2s ease;
+    left:16px;
+    bottom:5px;
+    color:#000;
+    font-weight: 300;
+    font-size: 16px;
+    line-height:24px;
+  }
   &__label{
     position: absolute;
     margin-bottom: 0;
@@ -729,6 +809,16 @@ export default {
   }
 
   @media (max-width:992px){
+    input[type="date"]:focus::before,
+input[type="date"]:valid::before {
+  content: "";
+}
+    .datetime-input-edit-wrapper{
+      display: none !important;
+    }
+    input[type="date"], input[type="time"]{
+      color: rgba(255,255,255,0);
+    }
     .Form{
       width:100%;
       &__title{
