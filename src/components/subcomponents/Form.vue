@@ -697,7 +697,7 @@ export default {
     &__numberHolder{
       display: flex;
       align-items: end;
-      height: 48px;
+      min-height: 48px;
       padding-bottom: 6px;
       position: absolute;
       width: 25px;
