@@ -5,10 +5,6 @@ const Contacts = {
         general: '110000, Москва, ул. Lorem ipsum amed dolor, офис',
         phone: '+7 000 000 000 000'
       },
-      {
-        general: '110000, Москва, ул. Lorem ipsum amed dolor, офис',
-        phone: '+7 000 000 000 000'
-      }
     ],
     SocialFooter: [
       {

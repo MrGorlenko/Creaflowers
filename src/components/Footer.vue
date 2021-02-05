@@ -23,26 +23,47 @@
         <img src="@/assets/map.png" alt="" class="Footer__map">
       </div>
     </div>
+
+    <!-- <go-top class="Footer__up d-lg-none 
+    d-flex justify-content-center align-items-center">
+    <img src="@/assets/up.svg" alt="">
+    </go-top> -->
     <div @click='scrollTop()' class="Footer__up d-lg-none 
     d-flex justify-content-center align-items-center">
       <img src="@/assets/up.svg" alt="">
     </div>
+    
   </div>
 </template>
+
 
 <script>
 import {mapState} from 'vuex'
 export default {
   name: "Footer",
+  components:{
+  },
   computed:{
+
     ...mapState({
       Contacts: state => state.Contacts.Contacts,
       Links: state => state.Contacts.SocialFooter
     })
   },
+  mounted() {
+      let recaptchaScript = document.createElement('script')
+      recaptchaScript.setAttribute('src', 'https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js')
+      document.head.appendChild(recaptchaScript)
+
+      let recaptchaScript2 = document.createElement('script')
+      recaptchaScript2.setAttribute('src', 'https://cdn.jsdelivr.net/npm/smooth-scroll@12.1.5')
+      document.head.appendChild(recaptchaScript2)
+  },
   methods: {
     scrollTop(){
-      setTimeout(window.scrollTo(0,0), 150)
+      var scroll = new SmoothScroll()
+      // setTimeout(window.scrollTo(0,0), 150)
+      scroll.animateScroll(0)
       
     }
   }
@@ -164,7 +185,7 @@ export default {
       width: 44px;
       height: 44px;
 
-      position: absolute;
+      position: fixed;
       bottom: 32px;
       right: 16px;
     }
