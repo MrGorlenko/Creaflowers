@@ -634,6 +634,7 @@ export default {
       border-radius: 0px;
       // border: 1px solid #E1E1E1;
       margin-bottom: 16px;
+      background: none;
     }
     &__date, &__time{
       border: none;
