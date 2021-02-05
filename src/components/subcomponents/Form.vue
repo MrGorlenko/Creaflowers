@@ -123,7 +123,7 @@
           v-model='phone' 
           @input="acceptNumber(); getTheOrdererNumber(phone)"
           class='CustomInput__input'
-          type='phone'
+          type='tel'
           >
       </div>
 
@@ -144,17 +144,20 @@
           v-model='receiverPhone' 
           @input="acceptReceiverNumber();getTheOrdererNumber(receiverPhone)"
           class='CustomInput__input'
-          type='phone'
+          type='tel'
           >
       </div>
 
     </div>
 
     <div class='d-flex justify-content-between'>
+      <div class="Form__customData"></div>
+
       <input 
       class='Form__date'
       @input='setTheDate(date)' 
-      type="date" v-model='date'>
+      type="date" v-model='date'
+      placeholder="дата">
       <input 
       class='Form__time'
       @input='setTheTime(time)'  
