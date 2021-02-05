@@ -616,6 +616,7 @@ export default {
     width: calc(#{$innerBasketWidth} - 20px) ;
     input{
       outline: none !important;
+      border-radius: 0 !important;
     }
     position: relative;
     &__title{
