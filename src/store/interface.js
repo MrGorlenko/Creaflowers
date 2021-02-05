@@ -15,7 +15,8 @@ const Interface = {
     },
     ModalMobileAdded : {
       isActive : false
-    }
+    },
+    LabelActive: false,
   },
   mutations: {
     MODAL_DEACTIVATE(state){
@@ -60,6 +61,14 @@ const Interface = {
     CLOSE_ADDED_MODAL_MOBILE(state){
       state.ModalMobileAdded.isActive = false
     },
+
+    // LABEL_ACTIVE(state){
+    //   state.LabelActive = true
+    // },
+
+    // LABEL_PASSIVE(state){
+    //   state.LabelActive = false
+    // }
 
   },
   actions: {

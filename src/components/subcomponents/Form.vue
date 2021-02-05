@@ -4,16 +4,14 @@
     <!-- <select name="" id="">
       <option value="">Apple Pay</option>
     </select> -->
-    <div class="d-lg-block d-none Form__select">
-      <select class='Form__input' name="" id="">
-        <option @click='choseCarrier()' value="carrier">Доставка курьером</option>
-        <option @click='chosePickup()' value="pickup">Самовывоз</option>
-      </select>
-    </div>
+
+    <!-- <custom-input></custom-input> -->
+    <!-- <CustomInput/> -->
+
 
       <div
       @click='activateDeliveryModal()'
-        class="Form__select d-lg-none ModalMobile__select">
+        class="Form__select  ModalMobile__select">
         <p class='ModalMobile__selectSize'>
           {{ReceiveType}}
         </p>
@@ -38,17 +36,17 @@
 <!-- Выбор доставки -->
 
 
-    <div class="d-lg-block d-none Form__select">
+    <!-- <div class="d-lg-block d-none Form__select">
       <select class='Form__input' name="" id="">
         <option @click='orderForMe()' value="">Заказ себе</option>
         <option @click='orderForSomeone()' value="">Заказ кому-то</option>
       </select>
-    </div>
+    </div> -->
 
 
     <div
       @click='activateOrderModal()'
-        class="Form__select d-lg-none ModalMobile__select">
+        class="Form__select ModalMobile__select">
         <p class='ModalMobile__selectSize'>
           {{OrderType}}
         </p>
@@ -74,35 +72,79 @@
     </div>
 <!-- КОМУ -->
 
-    <input class='Form__input '
-     v-model='OrdererName' 
-     type="text" 
-     @input="getTheOrdererName(OrdererName);"
-     placeholder="Ваше имя">
 
-    <input class='Form__input'
-    v-model='ReceiverName' 
-    v-if='Present'  
-    type="text"
-    @input="getTheReceiverName(ReceiverName)"
-    placeholder="Кому">
+  <div class="Form__input CustomInput d-flex flex-column justify-content-end">
+   <label
+   :class="{'CustomInput__label_focused': nameInput==true,
+   'CustomInput__label_blur': nameInput==false}"
+    class='CustomInput__label' for="">Ваше имя</label>
+          <input 
+      @focus='onFocusName'
+      @blur="onBlurName"
+      v-model='OrdererName' 
+       @input="getTheOrdererName(OrdererName);"
+      class='CustomInput__input'
+      >
+ </div>
 
-    <div class='phone Form__phone d-flex align-items-center'>
+
+  <div v-if='Present' 
+   class="Form__input CustomInput d-flex flex-column justify-content-end">
+   <label
+   :class="{'CustomInput__label_focused': receiverInput==true,
+   'CustomInput__label_blur': receiverInput==false}"
+    class='CustomInput__label' for="">Имя получателя</label>
+          <input 
+      @focus='onFocusReceiver'
+      @blur="onBlurReceiver"
+      v-model='ReceiverName' 
+       @input="getTheReceiverName(ReceiverName)"
+      class='CustomInput__input'
+      >
+ </div>
+
+
+
+    <div class='phone d-flex align-items-center'>
       <p class='Form__numberHolder'>+7</p>
-    <input 
-      placeholder="Введите ваш номер" 
-      v-model="phone" type="phone"
-      maxlength=14
-      @input="acceptNumber(); getTheOrdererNumber(phone)">
+
+
+      <div class="Form__input CustomInput d-flex flex-column justify-content-end">
+      <label
+      :class="{'CustomInput__label_focused': phoneInput==true,
+      'CustomInput__label_blur': phoneInput==false}"
+        class='CustomInput__label' for="">Ваш номер телефона</label>
+          <input 
+          @focus='onFocusPhone'
+          @blur="onBlurPhone"
+          v-model='phone' 
+          @input="acceptNumber(); getTheOrdererNumber(phone)"
+          class='CustomInput__input'
+          type='phone'
+          >
+      </div>
+
     </div>
 
      <div v-if='Present && Carrier'
-      class='Form__phone phone d-flex align-items-center'>
+      class='phone d-flex align-items-center'>
       <p class='Form__numberHolder'>+7</p>
-      <input placeholder="Введите номер получателя" 
-        v-model="receiverPhone" type="text" 
-        @input="acceptReceiverNumber();
-        getTheOrdererNumber(receiverPhone)">
+
+      <div class="Form__input CustomInput d-flex flex-column justify-content-end">
+      <label
+      :class="{'CustomInput__label_focused': receiverPhoneInput==true,
+      'CustomInput__label_blur': receiverPhoneInput==false}"
+        class='CustomInput__label' for="">Номер телефона получателя</label>
+          <input 
+          @focus='onFocusPhoneReceiver'
+          @blur="onBlurPhoneReceiver"
+          v-model='receiverPhone' 
+          @input="acceptReceiverNumber();getTheOrdererNumber(receiverPhone)"
+          class='CustomInput__input'
+          type='phone'
+          >
+      </div>
+
     </div>
 
     <div class='d-flex justify-content-between'>
@@ -117,11 +159,44 @@
     </div>
 
      <div v-if='Carrier'>
+
+      <div
+       v-if='unknownAdress == false'
+       class="Form__input CustomInput d-flex flex-column justify-content-end">
+      <label
+      :class="{'CustomInput__label_focused': addressInput==true,
+      'CustomInput__label_blur': addressInput==false}"
+        class='CustomInput__label' for="">Адрес</label>
+          <input 
+          @focus='onFocusAddress'
+          @blur="onBlurAddress"
+          v-model='address' 
+          @input="getTheAddress(address)"
+          class='CustomInput__input'
+          type='phone'
+          >
+      </div>
+
+      <div
+       v-else
+       class="Form__input CustomInput d-flex flex-column justify-content-end">
+      <label
+        class='CustomInput__label CustomInput__label_blur' for="">Узнаем адрес у получателя</label>
+          <input 
+          disabled
+          class='CustomInput__input'
+          type='phone'
+          >
+      </div>
+
+<!-- 
       <input class='Form__input' v-if='unknownAdress == false' @input="getTheAddress(address)"
         v-model='address' type="text" placeholder=" Адрес">
       <div v-else>
         <input class='Form__input' disabled type="text" placeholder="Узнаем адрес у получателя">
-      </div>
+      </div> -->
+
+
       <div class='d-flex align-items-center Form__unknownAdress'>
         <p v-if='Carrier && Present'>Узнать адрес у получателя</p>
         <input @click='callForAdress(address)' v-if='Carrier && Present'  type="checkbox">
@@ -129,22 +204,10 @@
       
      </div>
      <div  v-else>
-       <p class='d-lg-block d-none ' style='text-align:start'>Выберите адрес самовывоза</p>
-      <div class="d-lg-block d-none Form__select">
-      <select class='Form__input'
-       placeholder=" Адрес"  v-model="address"  name="" id="">
-       <!-- <option disabled>Выберите Адрес</option> -->
-       <option @click='getTheAddress(address)' 
-       v-for='address in AdressOfPickUp' 
-       :key='address' :value='address'>
-         {{address}}
-       </option>
-     </select>
-     </div>
 
           <div
       @click='activatePickUpModal()'
-        class="Form__select d-lg-none ModalMobile__select">
+        class="Form__select ModalMobile__select">
         <p class='ModalMobile__selectSize'>
           {{PickUpAdress}}
         </p>
@@ -168,7 +231,6 @@
       </div>
     </div>
 
-     <!-- Адрес {{AddressOfDelivery}} -->
      
      <textarea class='Form__comments' placeholder="Комментарий" name="" id="" cols="30" rows="10"></textarea>
 
@@ -195,7 +257,7 @@ export default {
   name: 'Form',
   el: '#form',
   components:{
-    SelectItem
+    SelectItem,
   },
     computed: {
     ...mapState({
@@ -244,7 +306,53 @@ export default {
       'RECEIVER_NAME', 'ORDERER_PHONE', 'RECEIVER_PHONE',
       'SET_DATE', 'SET_TIME', 'GET_ADDRESS', 'GET_COMMENT',
       'TOTAL_VALIDATION', 'RECEIVER_NON_SELECT', 'RECEIVER_SELECT',
-      'SET_ADDRESS_OF_PICK_UP']),
+      'SET_ADDRESS_OF_PICK_UP', 'LABEL_ACTIVE', 'LABEL_PASSIVE']),
+
+    onFocusName(){
+
+      this.nameInput=true
+    },
+
+    onBlurName(){
+      if (this.OrdererName == '')
+        this.nameInput=false
+      },
+
+    onFocusReceiver(){
+      this.receiverInput=true
+    },
+
+    onBlurReceiver(){
+      if (this.ReceiverName == '')
+        this.receiverInput=false
+      },
+
+    onFocusPhone(){
+      this.phoneInput=true
+    },
+    onBlurPhone(){
+      if (this.phone == '')
+        this.phoneInput=false
+    },
+
+    onFocusPhoneReceiver(){
+      this.receiverPhoneInput = true
+    },
+    onBlurPhoneReceiver(){
+      if (this.receiverPhone == '')
+        this.receiverPhoneInput = false
+    },
+
+    onFocusAddress(){
+      this.addressInput = true
+    },
+
+    
+    onBlurAddress(){
+      if (this.address == '')
+        this.addressInput = false
+    },
+
     choseCarrier(){
       this.CHOSE_CARRIER()
       this.ReceiveType = 'Курьером'
@@ -420,6 +528,12 @@ export default {
   },
   data(){
     return{
+      addressInput: false,
+      phoneInput: false,
+      receiverPhoneInput: false,
+      receiverInput: false,
+      nameInput:false,
+
       PickUpAdress: '',
       OrderType: 'Заказ себе',
       ReceiveType: 'Курьером',
@@ -447,9 +561,52 @@ export default {
 
 <style lang='scss'>
 @import '@/vendor/interface.scss';
+
+
+.CustomInput{
+  position: relative;
+  width: 100%;
+  height: 56px;
+  min-height: 56px;
+  &__label{
+    position: absolute;
+    margin-bottom: 0;
+    transition: .2s ease;
+    left:16px;
+    &_blur{
+      bottom: 5px;
+     color: #000000;
+     font-weight: 600;
+     font-size: 16px;
+     line-height: 24px;
+    }
+    &_focused{
+      bottom: 37px;
+     color: #A4A4A4;
+     font-size: 13px;
+     line-height: 20px;
+    }
+  }
+  &__input{
+    width:100%;
+    border: none;
+    padding-left: 16px;
+    border-bottom: 1px solid rgba(0,0,0,.25);
+    z-index: 10;
+    background: none;
+  }
+}
+
   .phone {
     span{
-      background: grey;
+      background: none;
+    }
+    .Form__input label{
+      left: 25px;
+      line-height: 17px;
+    }
+    .Form__input input{
+      padding-left: 25px;
     }
   }
   .Form{
@@ -470,16 +627,18 @@ export default {
     }
     &__date, &__time{
       height: 64px;
-      border-radius: 6px;
-      border: 1px solid #E1E1E1;
+      border-radius: 0px;
+      // border: 1px solid #E1E1E1;
       margin-bottom: 16px;
     }
-    // &__date, &__time{
+    &__date, &__time{
+      border: none;
+      border-bottom: 1px solid rgba(0,0,0,.25)
       // background: none;
       // display: flex;
       // justify-content: center;
       // align-items: center;
-    // }
+    }
     &__date{
       width: 67%;
     }
@@ -494,12 +653,12 @@ export default {
       z-index: 100;
     }
     &__input{
-      width: 100%;
-      border: 1px solid #E1E1E1;
-      border-radius: 6px;
-      height: 64px;
+      // width: 100%;
+      // border: 1px solid #E1E1E1;
+      // border-radius: 6px;
+      // height: 64px;
       margin-bottom: 16px;
-      color: #000;
+      // color: #000;
     }
     &__unknownAdress{
       p{
@@ -537,17 +696,20 @@ export default {
     }
     &__numberHolder{
       display: flex;
-      align-items: center;
-      height: 64px;
+      align-items: end;
+      height: 48px;
+      padding-bottom: 6px;
+      position: absolute;
       width: 25px;
-      background: #BDBDBD;
+      // background: #BDBDBD;
       margin-bottom: 0;
-      border-radius: 6px 0 0 6px;
+      color: #000;
+      font-weight: 600;
     }
     &__submit{
       @include SubmitButton;
-      width: calc(#{$innerBasketWidth}) ;
-      margin-left: -17px;
+      width: calc(#{$innerBasketWidth} - 20px) ;
+      // margin-left: -17px;
       &_passive{
         background: #BDBDBD;
         &:hover{
