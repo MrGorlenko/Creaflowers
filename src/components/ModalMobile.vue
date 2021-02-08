@@ -4,10 +4,10 @@
     'ModalMobile_passive': MobileModalActive == false}"
    class="ModalMobile">
     <!-- <div class="ModalMobile__dark"></div> -->
-    <div class="d-flex justify-content-center align-items-center
+    <div class="d-flex justify-content-start align-items-center
      ModalMobile__close"
-     @click='closeModalMobile()'>
-      <div></div>
+     >
+      <img @click='closeModalMobile()' src="@/assets/CloseBasket.svg" alt="">
     </div>
     <div class="ModalMobile__img">
       <img src="@/assets/goodExample.png" alt="">

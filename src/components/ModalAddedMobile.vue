@@ -3,10 +3,15 @@
   :class="{'ModalAddedMobile_active': ModalAddedActive == true,
   'ModalAddedMobile_passive' : ModalAddedActive == false}"
   class="ModalAddedMobile">
-    <div class="d-flex justify-content-center align-items-center
+    <!-- <div class="d-flex justify-content-center align-items-center
      ModalAddedMobile__close"
      @click='closeModalMobile()'>
       <div></div>
+    </div> -->
+    <div class="d-flex justify-content-start align-items-center
+     ModalMobile__close"
+     >
+      <img @click='closeModalMobile()' src="@/assets/CloseBasket.svg" alt="">
     </div>
       <div class="ModalAddedMobile__img">
         <img

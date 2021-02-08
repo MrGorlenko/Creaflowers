@@ -177,7 +177,8 @@ const Inventories = {
       },
     },
     addedGoods: [
-      {
+
+       {
         title: 'added1',
         img: '#',
         price: 1000,
@@ -249,6 +250,7 @@ const Inventories = {
         amount: 1, 
         selected: false
       }
+
     ]
   },
   mutations: {
@@ -334,15 +336,28 @@ const Inventories = {
 
     ADD_NEW_PRICE(state, newPrice){
       state.finalPrice += newPrice
-    }
+    },
     
-
+    UPDATE_ADDED_GOODS(state, goods) {
+      state.addedGoods = goods
+    }
 
 
   },
   actions: {
+    // async fetchAddedGoods(ctx){
+    //   const res = await fetch(
+    //     'https://ulanbek.pythonanywhere.com/api/items/extra-goods/'
+    //   )
+    //   const addedGoods = await res.json();
+    //   ctx.commit('UPDATE_ADDED_GOODS', addedGoods)
+    //   // this.addedGoods = addedGoods
+    // }
   },
   getters: {
+    allAddedGoods(state){
+      return state.addedGoods
+    }
   },
   modules: {
   }

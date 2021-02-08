@@ -169,12 +169,13 @@ $mobileNavigatorHeight: 87px;
 }
 
 @mixin ModalMobileClose{
-  height: 16px;
+  height: 58px;
   z-index: 2;
   position: absolute;
   top: 0;
   left:0;
   width: 100%;
+  padding-left: 10px;
   div{
     width: 36px;
     height: 4px;
