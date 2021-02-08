@@ -176,82 +176,7 @@ const Inventories = {
         ]
       },
     },
-    addedGoods: [
-
-       {
-        title: 'added1',
-        img: '#',
-        price: 1000,
-        oldPrice: 10000,
-        amount: 1, 
-        selected: false
-      },
-      {
-        title: 'added2',
-        img: '#',
-        price: 2000,
-        oldPrice: 10000,
-        amount: 1, 
-        selected: false
-      },
-      {
-        title: 'added3',
-        img: '#',
-        price: 3000,
-        oldPrice: 10000,
-        amount: 1, 
-        selected: false
-      },
-      {
-        title: 'added1',
-        img: '#',
-        price: 1000,
-        oldPrice: 10000,
-        amount: 1, 
-        selected: false
-      },
-      {
-        title: 'added2',
-        img: '#',
-        price: 2000,
-        oldPrice: 10000,
-        amount: 1, 
-        selected: false
-      },
-      {
-        title: 'added3',
-        img: '#',
-        price: 3000,
-        oldPrice: 10000,
-        amount: 1, 
-        selected: false
-      },
-      {
-        title: 'added1',
-        img: '#',
-        price: 1000,
-        oldPrice: 10000,
-        amount: 1, 
-        selected: false
-      },
-      {
-        title: 'added2',
-        img: '#',
-        price: 2000,
-        oldPrice: 10000,
-        amount: 1, 
-        selected: false
-      },
-      {
-        title: 'added3',
-        img: '#',
-        price: 3000,
-        oldPrice: 10000,
-        amount: 1, 
-        selected: false
-      }
-
-    ]
+    addedGoods: [  ]
   },
   mutations: {
 
@@ -345,14 +270,14 @@ const Inventories = {
 
   },
   actions: {
-    // async fetchAddedGoods(ctx){
-    //   const res = await fetch(
-    //     'https://ulanbek.pythonanywhere.com/api/items/extra-goods/'
-    //   )
-    //   const addedGoods = await res.json();
-    //   ctx.commit('UPDATE_ADDED_GOODS', addedGoods)
-    //   // this.addedGoods = addedGoods
-    // }
+    async fetchAddedGoods(ctx){
+      const res = await fetch(
+        'https://ulanbek.pythonanywhere.com/api/items/extra-goods/'
+      )
+      const addedGoods = await res.json();
+      ctx.commit('UPDATE_ADDED_GOODS', addedGoods)
+      // this.addedGoods = addedGoods
+    }
   },
   getters: {
     allAddedGoods(state){

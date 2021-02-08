@@ -110,11 +110,11 @@ export default {
       addedGoods: state => state.Inventories.addedGoods,
       addedGoodsSelected: state => state.Inventories.addedGoodsSelected
     }),
-    // ...mapGetters(['allAddedGoods'])
+    ...mapGetters(['allAddedGoods'])
   },
-  // async mounted(){
-  //   this.fetchAddedGoods();
-  // },
+  async mounted(){
+    this.fetchAddedGoods();
+  },
   methods: {
     ...mapActions(['fetchAddedGoods']),
     ...mapMutations(['ADD_TO_MODAL_ADDED',
