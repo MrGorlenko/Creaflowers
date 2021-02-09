@@ -37,6 +37,7 @@
         <!-- Desctop -->
 
       <!-- Mobile -->
+      
         <div @click="mobileModalActivate();getInfo(item, item.size[0])" 
         class="goods__itemM d-lg-none d-flex"
         v-for='item in goods.goods' :key=item>
@@ -86,8 +87,13 @@ export default {
       modal: state => state.Inventories.modal,
       catsView: state => state.Interface.categoryActivation
     }),
+    ...mapGetters(['allGoods'])
+  },
+  async mounted(){
+    this.fetchGoods();
   },
   methods: {
+     ...mapActions(['fetchGoods']),
     ...mapMutations(['ADD_TO_MODAL', 'ADD_TO_BASKET', 'MODAL_ACTIVATE',
      'SET_SIZE', 'OPEN_MODAL_MOBILE']),
     getInfo(info, size) {

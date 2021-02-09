@@ -16,7 +16,10 @@ const Inventories = {
       img: '',
       price: ''
     },
+    Ngoods: null
+      ,
     goods: {
+
       'category1' : {
         isActive: true,
         goods: [
@@ -176,6 +179,7 @@ const Inventories = {
         ]
       },
     },
+
     addedGoods: [  ]
   },
   mutations: {
@@ -265,6 +269,20 @@ const Inventories = {
     
     UPDATE_ADDED_GOODS(state, goods) {
       state.addedGoods = goods
+    },
+
+    UPDATE_ALL_GOODS(state, goods){
+      state.goods = goods
+    },
+
+    PARCING(state){
+      state.Ngoods = {}
+      let put = function(key, value) {
+        this.container[key] = value;
+     }
+      // for (i of state.goods){
+      //   state.Ngoods.put(i)
+      // }
     }
 
 
@@ -276,10 +294,20 @@ const Inventories = {
       )
       const addedGoods = await res.json();
       ctx.commit('UPDATE_ADDED_GOODS', addedGoods)
-      // this.addedGoods = addedGoods
+    },
+    async fetchGoods(ctx){
+      const res = await fetch(
+        'https://ulanbek.pythonanywhere.com/api/items/flowers/?format=json'
+      )
+      const goods = await res.json()
+      // ctx.commit('UPDATE_ALL_GOODS', goods)
+      // ctx.commit('PARCING', goods)
     }
   },
   getters: {
+    allGoods(state){
+      return state.goods
+    },
     allAddedGoods(state){
       return state.addedGoods
     }

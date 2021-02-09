@@ -16,9 +16,9 @@
       v-for="(added) in addedGoods" :key='added'
       class="addedGoods__item"
       >
-        <img class='addedGoods__img'
-        src="https://ust-ilimsk.loveflowers.ru/wp-content/uploads/2018/04/rafaello-150.jpg" 
-        alt="">
+       <img  class='addedGoods__img'
+       v-bind:src='added.image'
+          alt="нет">
 
         <p class="addedGoods__title">{{added.title}}</p>
         <p class="addedGoods__price">
@@ -42,9 +42,9 @@
       v-for="(added) in addedGoods" :key='added'
       class="addedGoods__item"
       >
-        <img class='addedGoods__img'
-        src="https://ust-ilimsk.loveflowers.ru/wp-content/uploads/2018/04/rafaello-150.jpg" 
-        alt="">
+       <img  class='addedGoods__img'
+       v-bind:src='added.image'
+          alt="нет">
 
         <p class="addedGoods__title">{{added.title}}</p>
         <p class="addedGoods__price ">
@@ -66,7 +66,7 @@
     </swiper>
 
     <div class="addedGoods__wrapper">
-      <div @click='addToModalAdded(added);' v-for="(added) in addedGoods" :key='added'
+      <div @click='addToModalAdded(added);' v-for="(added) in addGoods" :key='added'
       class="addedGoods__item"
       > 
         <!-- <div :class="{addedGoods__item_selected: added.selected}"> -->
@@ -94,10 +94,8 @@
 </template>
 
 <script>
-// import SwiperCore from 'swiper'
 import {Swiper, SwiperSlide} from 'swiper/vue'
 import 'swiper/swiper.scss';
-// SwiperCore.use()
 import {mapGetters, mapActions, mapState, mapMutations} from 'vuex'
 export default {
   name: 'AddedGoods',
@@ -137,6 +135,11 @@ export default {
       this.OPEN_ADDED_MODAL_MOBILE()
     }
 
+  },
+  data(){
+    return {
+      addGoods: []
+    }
   }
 }
 </script>

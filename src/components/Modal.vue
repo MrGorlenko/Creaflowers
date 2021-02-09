@@ -43,10 +43,10 @@
       <div class='d-flex'>
         <p class='Modal__counter d-flex 
         flex-row justify-content-between align-items-center'>
-          <button class='Modal__button' v-if='amount>1' @click='minusOne()'>-</button>
-          <button class='Modal__button' v-else disabled>-</button>
+          <button class='Modal__button' v-if='amount>1' @click='minusOne()'><span class='d-block'>-</span></button>
+          <button class='Modal__button' v-else disabled><span class='d-block'>-</span></button>
             {{amount}}
-          <button class='Modal__button' @click='plusOne()'>+</button>
+          <button class='Modal__button' @click='plusOne()'><span class='d-block'>+</span></button>
         </p>
     
         <div class="Modal__price d-flex align-items-center justify-content-end">         

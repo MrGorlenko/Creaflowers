@@ -236,9 +236,9 @@
       </div> -->
 
 
-      <div class='d-flex align-items-center Form__unknownAdress'>
-        <p v-if='Carrier && Present'>Узнать адрес у получателя</p>
-        <input @click='callForAdress(address)' v-if='Carrier && Present'  type="checkbox">
+      <div v-if='Carrier && Present' class='d-flex align-items-center Form__unknownAdress'>
+        <p :class="{'d-none': !Carrier && !Present}" v-if='Carrier && Present'>Узнать адрес у получателя</p>
+        <input :class="{'d-none': !Carrier && !Present}" @click='callForAdress(address)' v-if='Carrier && Present'  type="checkbox">
       </div>
       
      </div>
@@ -677,7 +677,10 @@ export default {
     width:100%;
     border: none;
     padding-left: 16px;
-    border-bottom: 1px solid rgba(0,0,0,.25);
+    height: 100%;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    // border-bottom: 1px solid rgba(0,0,0,.25);
     z-index: 10;
     background: none;
   }
@@ -699,7 +702,7 @@ export default {
     width: calc(#{$innerBasketWidth} - 20px) ;
     input{
       outline: none !important;
-      border-radius: 0 !important;
+      // border-radius: 0 !important;
     }
     position: relative;
     &__title{
@@ -759,7 +762,7 @@ export default {
       border: 1px solid #E1E1E1;
       border-radius: 6px;
       margin-bottom: 52px;
-      margin-top: 16px;
+      margin-top: 0px;
     }
     &__select{
       @include Select;
