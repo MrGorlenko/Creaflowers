@@ -159,7 +159,8 @@
       <input 
       class='Form__time'
       @input='setTheTime(time)'  
-      type="time" v-model='time'>
+      type="time" v-model='time'
+      placeholder="Время">
     </div>
 
     <div class='Form__input d-flex d-lg-none justify-content-between CustomInput__dateTime'>
@@ -192,6 +193,7 @@
           type="time"
           @input="setTheTime(time);"
           class='CustomInput__input'
+          placeholder="Время"
         >
       </div>
       
@@ -635,6 +637,8 @@ export default {
   width: 100%;
   height: 56px;
   min-height: 56px;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
   &__dateTime{
     input{
       // background: #fff;
@@ -677,9 +681,11 @@ export default {
     width:100%;
     border: none;
     padding-left: 16px;
-    height: 100%;
-    border: 1px solid rgba(0, 0, 0, 0.5);
-    border-radius: 10px;
+    height: 60%;
+    margin-top: 40%;
+    // height: 100%;
+    // border: 1px solid rgba(0, 0, 0, 0.5);
+    // border-radius: 10px;
     // border-bottom: 1px solid rgba(0,0,0,.25);
     z-index: 10;
     background: none;

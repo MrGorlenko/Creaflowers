@@ -157,9 +157,10 @@ export default {
     }
   }
   &__item{
-    padding: 5px;
+    // padding: 5px;
     width:calc( #{$innerBasketWidth} - 20px);
     padding:0;
+    min-height: 138px;
     // padding: 0 10px 0 10px;
     border-bottom: 1px solid #EBEBEB;
     display: flex;
@@ -211,6 +212,7 @@ export default {
   }
   &__button{
     background: none;
+    padding:0;
     width: 45px;
     height: 45px;
     border-radius: 17px;
