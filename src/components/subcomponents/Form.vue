@@ -1,5 +1,5 @@
 <template>
-  <form id='form' class="Form" @submit.prevent="addOrder" method="post">
+  <form id='form' class="Form"  method="post">
     <p class='Form__title'>Order</p>
     <!-- <select name="" id="">
       <option value="">Apple Pay</option>
@@ -275,7 +275,7 @@
 
     <div class="Form__submitHolder d-flex justify-content-center
     align-items-center">
-      <button class='Form__submit' @click="Final()" v-if='TotalValid==true'>
+      <button class='Form__submit' @click="Final(); addOrder()" v-if='TotalValid==true'>
         Заказать на сумму {{ Result }}
       </button>
       <button class='Form__submit Form__submit_passive' disabled v-else>
@@ -808,7 +808,7 @@ export default {
         margin-right: 10px;
       }
     }
-  }
+  
 
   &__comments {
     width: 100%;

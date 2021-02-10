@@ -1,49 +1,30 @@
 <template>
   <div class="home">
-    <Navigation/>
-    <Modal/>
-    <BasketButton/>
-    <Basket/>
-    <ModalAdded/>
-    <ModileMobileDark/>
-    <ModalAddedMobile/>
-    <div v-if='BasketActive==false'  class="base">
-      <Goods/>
-      <Footer/>
-      <ModalMobile/>
-    </div>
+    <Goods/>
+    <Footer/>
+    <ModalMobile/>
   </div>
 </template>
 
 <script>
-import Navigation from '@/components/Navigation.vue'
 import Goods from '@/components/Goods.vue'
-import Modal from '@/components/Modal.vue'
-import ModalAdded from '@/components/ModalAdded.vue'
-import Basket from '@/components/Basket.vue'
 import Footer from '@/components/Footer.vue'
 
 import ModalMobile from '@/components/ModalMobile.vue'
 import ModileMobileDark from '@/components/subcomponents/ModalMobileDark.vue'
 import ModalAddedMobile from '@/components/ModalAddedMobile.vue'
 
-import BasketButton from '@/components/subcomponents/BasketButton.vue'
 import {mapState} from 'vuex'
 export default {
   name: 'Home',
   components: {
-    Navigation,
     Goods,
-    Modal,
-    Basket,
-    ModalAdded,
     Footer,
 
     ModalMobile,
     ModileMobileDark,
     ModalAddedMobile,
 
-    BasketButton
   },
     computed: {
     ...mapState({

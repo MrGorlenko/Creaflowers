@@ -17,8 +17,22 @@ const Interface = {
       isActive : false
     },
     LabelActive: false,
+
+    AllCats: true,
+
+    Category: [
+
+    ],
+    CategoryName : null
   },
   mutations: {
+
+    SELECT_CATEGORY(state, category){
+      state.Category = []
+      state.Category.push(category)
+      state.CategoryName = category[1]
+    },
+
     MODAL_DEACTIVATE(state){
       state.Modal.isActive = false
     },
@@ -62,14 +76,13 @@ const Interface = {
       state.ModalMobileAdded.isActive = false
     },
 
-    // LABEL_ACTIVE(state){
-    //   state.LabelActive = true
-    // },
+    ACTIVATE_ALL_CATS(state){
+      state.AllCats = true
+    },
 
-    // LABEL_PASSIVE(state){
-    //   state.LabelActive = false
-    // }
-
+    DEACTIVATE_ALL_CATS(state){
+      state.AllCats = false
+    }
   },
   actions: {
   },

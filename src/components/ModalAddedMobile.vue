@@ -49,8 +49,8 @@ export default {
   },
   methods: {
     ...mapMutations(['CLOSE_ADDED_MODAL_MOBILE', 'ADD_TO_BASKET_ADDED']),
-    addToBasket(item, price, img){
-      let added = [item, price * this.amount ,img,  this.amount]
+    addToBasket(title, price, img){
+      let added = [title, price , img,  this.amount]
       this.ADD_TO_BASKET_ADDED(added)
     },
     closeModalMobile(){

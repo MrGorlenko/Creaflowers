@@ -1,18 +1,17 @@
 <template>
   <div class="goods">
     <div class='goods__wrapper'
-    v-for="(goods, category) in categories" :key="goods"
     >
-    <h2 class=" goods__category">{{category}}</h2>
-    <!-- <div 
-    class="goods__products align-items-start d-lg-flex flex-wrap" 
-    v-if='goods.isActive'
-    > -->
-      <div @click="getInfo(item, item.size[0])"
+    
+    <h2 class=" goods__category">{{this.$router.currentRoute._rawValue.params.id}}</h2>
+  <div class=" goods__products align-items-lg-start d-none d-lg-flex flex-wrap">
+    <!-- <h1>AAA</h1> -->
+    
+    <div @click="getInfo(item, item.size[0])"
        class='goods__item d-lg-block d-none'
-        v-for='item in goods.goods' :key=item>
-        <img @click='addToBasket(item.title, item.price[0], item.image, item.size[0])' 
-        src="@/assets/toBasket.svg" alt="" class="goods__toBasket">
+        v-for='item in categories[this.$router.currentRoute._rawValue.params.id].goods' 
+        :key=item>
+        <img @click='addToBasket(item.title, item.price[0], item.image, item.size[0])' src="@/assets/toBasket.svg" alt="" class="goods__toBasket">
         <img @click='modalActivate()' src="@/assets/toModal.svg" alt="" class="goods__toModal">
 
 
@@ -25,13 +24,12 @@
             </div>
           </div>
      </div>
-        <!-- Desctop -->
+  </div>
 
-      <!-- Mobile -->
 
-        <div @click="mobileModalActivate();getInfo(item, item.size[0])" 
+    <div @click="mobileModalActivate();getInfo(item, item.size[0])" 
         class="goods__itemM d-lg-none d-flex"
-        v-for='item in goods.goods' :key=item>
+        v-for='item in categories[this.$router.currentRoute._rawValue.params.id].goods' :key=item>
         <!-- ДЕАКТИВИРОВАТЬ КОГДА БУДУТ ЗАБИНЖЕНЫ КАРТИНКИ -->
           <!-- <img class='goods__img' 
           src="@/assets/goodExample.png"
@@ -61,17 +59,21 @@
             </div>
           <!-- </div> -->
         </div>  
-      <!-- Mobile -->
       <!-- </div> -->
-        <!--  -->
-    </div>
   </div>
+  </div>
+<Footer/>
+
 </template>
 
 <script>
 import {mapGetters, mapActions, mapState, mapMutations} from 'vuex'
+import Footer from '@/components/Footer.vue'
 export default {
   name: 'goods',
+  components:{
+    Footer
+  },
   computed: {
     ...mapState({
       categories: state => state.Inventories.goods,
@@ -80,11 +82,11 @@ export default {
     }),
     ...mapGetters(['allGoods'])
   },
-  async mounted(){
-    this.fetchGoods();
-  },
   methods: {
-     ...mapActions(['fetchGoods']),
+    callRouter: function(){
+      // console.log(this.$router.currentRoute._rawValue.params.id)
+      // console.log(this.$router.currentRoute._rawValue.params)
+    },
     ...mapMutations(['ADD_TO_MODAL', 'ADD_TO_BASKET', 'MODAL_ACTIVATE',
      'SET_SIZE', 'OPEN_MODAL_MOBILE']),
     getInfo(info, size) {
@@ -102,8 +104,15 @@ export default {
     mobileModalActivate(){
       this.OPEN_MODAL_MOBILE()
     }
+  },
+  data() {
+    return {
+      post: '',
+      // id: this.$router.currentRoute.params['id'],
 
-  }
+    };
+  },
+ 
 }
 </script>
 
@@ -113,9 +122,8 @@ export default {
   .goods{
     width: calc(1580px - #{$sideBarWidth});
     margin: auto;
-    &__wrapper{
-      position: relative;
-    }
+    position: relative;
+    padding-top: 25px;
     &__category{
       width: 100%;
       position: absolute;
@@ -129,7 +137,7 @@ export default {
       width: 100%;
       min-height: 100vh;
       position: relative;
-      padding-top: 75px;
+      padding-top: 55px;
     }
     &__toBasket, &__toModal{
       width: 18.7;
@@ -254,6 +262,8 @@ export default {
         font-weight: bold;
         text-align: start;
         margin-top: 24px;
+        position: relative;
+        margin-bottom: 24px;
       }
       &__itemM{
         width: 100%;

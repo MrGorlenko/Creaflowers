@@ -68,7 +68,7 @@ const Inventories = {
 
     ADD_TO_BASKET_ADDED(state, added){
       state.basket.push(added)
-      state.finalPrice += added[1]
+      state.finalPrice += added[1]*added[3]
     },
 
     REMOVE_FROM_BASKET(state,index){
