@@ -3,14 +3,14 @@
    class=" Modal__wrapper d-none justify-content-center align-items-center">
     <div class="Modal d-flex flex-column justify-content-between">
       <img @click='modalDeactivate()' src="@/assets/Close.svg" alt="" class="Modal__close">
-      <!-- АКТИВИРОВАТЬ КОГДА БУДУТ ЗАБИНЖЕНЫ КАРТИНКИ 
-        <img class='goods__img' :src="modal.img" alt=""> 
-        АКТИВИРОВАТЬ КОГДА БУДУТ ЗАБИНЖЕНЫ КАРТИНКИ -->
+      <!-- АКТИВИРОВАТЬ КОГДА БУДУТ ЗАБИНЖЕНЫ КАРТИНКИ  -->
+        <img class='goods__img' :src="modal.image" alt=""> 
+        <!-- АКТИВИРОВАТЬ КОГДА БУДУТ ЗАБИНЖЕНЫ КАРТИНКИ -->
 
       <!-- ДЕАКТИВИРОВАТЬ КОГДА БУДУТ ЗАБИНЖЕНЫ КАРТИНКИ -->
-      <img class='Modal__img' 
+      <!-- <img class='Modal__img' 
         src="https://floristcenter.ru/image/catalog/Newphoto/Buket-iz-101-krasnoy-roz.jpg"
-        alt="">
+        alt=""> -->
       <!-- ДЕАКТИВИРОВАТЬ КОГДА БУДУТ ЗАБИНЖЕНЫ КАРТИНКИ -->
       <div>
       <p class='Modal__title'>{{modal.title}}</p>
@@ -64,7 +64,7 @@
       </div>
 
       <button class='Modal__addToBasket'
-      @click="addToBasket(modal.title, modalPrice, modal.img, modalSize);modalDeactivate()"
+      @click="addToBasket(modal.title, modalPrice, modal.image, modalSize);modalDeactivate()"
       >
         Добавить в корзину
       </button>

@@ -7,24 +7,24 @@
     class="goods__products align-items-center d-flex flex-wrap" 
     v-if='goods.isActive'
     >
-      <p class="d-lg-none goods__category">{{category}}</p>
+      <p class=" goods__category">{{category}}</p>
       <!-- <p>{{goods.isActive}}</p> -->
       <!-- Desctop -->
       <div @click="getInfo(item, item.size[0])"
        class='goods__item d-lg-block d-none'
         v-for='item in goods.goods' :key=item>
-        <img @click='addToBasket(item.title, item.price[0], item.img, item.size[0])' src="@/assets/toBasket.svg" alt="" class="goods__toBasket">
+        <img @click='addToBasket(item.title, item.price[0], item.image, item.size[0])' src="@/assets/toBasket.svg" alt="" class="goods__toBasket">
         <img @click='modalActivate()' src="@/assets/toModal.svg" alt="" class="goods__toModal">
 
         <!-- ДЕАКТИВИРОВАТЬ КОГДА БУДУТ ЗАБИНЖЕНЫ КАРТИНКИ -->
-        <img class='goods__img' 
+        <!-- <img class='goods__img' 
         src="https://floristcenter.ru/image/catalog/Newphoto/Buket-iz-101-krasnoy-roz.jpg"
-        alt="">
+        alt=""> -->
         <!-- ДЕАКТИВИРОВАТЬ КОГДА БУДУТ ЗАБИНЖЕНЫ КАРТИНКИ -->
 
-        <!-- АКТИВИРОВАТЬ КОГДА БУДУТ ЗАБИНЖЕНЫ КАРТИНКИ 
-        <img class='goods__img' :src="item.img" alt=""> 
-        АКТИВИРОВАТЬ КОГДА БУДУТ ЗАБИНЖЕНЫ КАРТИНКИ -->
+        <!-- АКТИВИРОВАТЬ КОГДА БУДУТ ЗАБИНЖЕНЫ КАРТИНКИ  -->
+        <img class='goods__img' :src="item.image" alt="FLOWER"> 
+        <!-- АКТИВИРОВАТЬ КОГДА БУДУТ ЗАБИНЖЕНЫ КАРТИНКИ -->
           <div class="goods__info">
             <p class='goods__title'>{{item.title}}</p>
             <div class="goods__cost ">
@@ -37,19 +37,19 @@
         <!-- Desctop -->
 
       <!-- Mobile -->
-      
+
         <div @click="mobileModalActivate();getInfo(item, item.size[0])" 
         class="goods__itemM d-lg-none d-flex"
         v-for='item in goods.goods' :key=item>
         <!-- ДЕАКТИВИРОВАТЬ КОГДА БУДУТ ЗАБИНЖЕНЫ КАРТИНКИ -->
-          <img class='goods__img' 
+          <!-- <img class='goods__img' 
           src="@/assets/goodExample.png"
-          alt="">
+          alt=""> -->
         <!-- ДЕАКТИВИРОВАТЬ КОГДА БУДУТ ЗАБИНЖЕНЫ КАРТИНКИ -->
 
-          <!-- АКТИВИРОВАТЬ КОГДА БУДУТ ЗАБИНЖЕНЫ КАРТИНКИ 
-          <img class='goods__img' :src="item.img" alt=""> 
-          АКТИВИРОВАТЬ КОГДА БУДУТ ЗАБИНЖЕНЫ КАРТИНКИ -->
+          <!-- АКТИВИРОВАТЬ КОГДА БУДУТ ЗАБИНЖЕНЫ КАРТИНКИ  -->
+          <img class='goods__img' :src="item.image" alt="FLOWER"> 
+          <!-- АКТИВИРОВАТЬ КОГДА БУДУТ ЗАБИНЖЕНЫ КАРТИНКИ -->
 
           <!-- <div class="goods__info"> -->
             <p class="goods__title">{{item.title}}</p>

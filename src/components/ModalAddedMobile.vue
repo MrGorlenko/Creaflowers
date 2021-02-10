@@ -15,7 +15,7 @@
     </div>
       <div class="ModalAddedMobile__img">
         <img
-        src="https://ust-ilimsk.loveflowers.ru/wp-content/uploads/2018/04/rafaello-150.jpg" 
+        :src="modalAdded.image" 
         alt="">
       </div>
       <div class="ModalAddedMobile__info">
@@ -24,7 +24,7 @@
       <!-- <p class='ModalAddedMobile__description'>Description</p> -->
       <button class='ModalAddedMobile__addToBasket'
       @click="closeModalMobile(); 
-      addToBasket(modalAdded.title, modalAdded.price)"
+      addToBasket(modalAdded.title, modalAdded.price, modalAdded.image)"
       >
         Добавить в корзину
       </button>
@@ -49,8 +49,8 @@ export default {
   },
   methods: {
     ...mapMutations(['CLOSE_ADDED_MODAL_MOBILE', 'ADD_TO_BASKET_ADDED']),
-    addToBasket(item, price){
-      let added = [item, price * this.amount ,null,  this.amount]
+    addToBasket(item, price, img){
+      let added = [item, price * this.amount ,img,  this.amount]
       this.ADD_TO_BASKET_ADDED(added)
     },
     closeModalMobile(){

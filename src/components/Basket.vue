@@ -9,14 +9,14 @@
 
     <div  v-for="(good, index) in Goods" :key=good class="basket__item">
       <!-- <div  v-for="(good) in Goods" :key=good class="basket__item"> -->
-      <!-- АКТИВИРОВАТЬ КОГДА БУДУТ ЗАБИНЖЕНЫ КАРТИНКИ 
-        <img class='goods__img' :src="good[2]" alt=""> 
-        АКТИВИРОВАТЬ КОГДА БУДУТ ЗАБИНЖЕНЫ КАРТИНКИ -->
+      <!-- АКТИВИРОВАТЬ КОГДА БУДУТ ЗАБИНЖЕНЫ КАРТИНКИ  -->
+        <img class='basket__img' :src="good[2]" alt="НЕТ"> 
+        <!-- АКТИВИРОВАТЬ КОГДА БУДУТ ЗАБИНЖЕНЫ КАРТИНКИ -->
 
       <!-- ДЕАКТИВИРОВАТЬ КОГДА БУДУТ ЗАБИНЖЕНЫ КАРТИНКИ -->
-      <img class='basket__img' 
+      <!-- <img class='basket__img' 
         src="https://floristcenter.ru/image/catalog/Newphoto/Buket-iz-101-krasnoy-roz.jpg"
-        alt="">
+        alt=""> -->
       <!-- ДЕАКТИВИРОВАТЬ КОГДА БУДУТ ЗАБИНЖЕНЫ КАРТИНКИ -->
       <div class="basket__info d-flex flex-wrap">
         <img @click='removeFromBasket(index); removePriceFromBasket(good[1]*good[3])' src="@/assets/RemoveGood.svg" alt="" class="basket__removeItem">
@@ -142,6 +142,7 @@ export default {
     width: 110px;
     height: 108px;
     border-radius: 12px;
+    margin-right: 17px;
   }
   &__close{
     position: absolute;

@@ -9,7 +9,7 @@ const Inventories = {
       price: [],
       size: [],
       price_size:[],
-      img: '#'
+      image: '#'
     },
     modalAdded: {
       title: '',
@@ -18,167 +18,7 @@ const Inventories = {
     },
     Ngoods: null
       ,
-    goods: {
-
-      'category1' : {
-        isActive: true,
-        goods: [
-          {
-            id:1,
-            title: "flowers1",
-            description:"description1 description1 description1 description1",
-            img: "#",
-            size: [],
-            price: [1000],
-            oldPrice: 1200
-          },
-          {
-            id:2,
-            title: "flowers2",
-            description:"description2 description2 description2 description2",
-            img: "#",
-            size: ["small",  "medium", "large" ],
-            price: [1000, 1500, 2000],
-            oldPrice: 1200
-          },
-          {
-            id:3,
-            title: "flowers3",
-            description:"description3 description3 description3 description3",
-            img: "#",
-            size: [ 'small', "large"],
-            price: [800, 1500],
-          },
-          {
-            id:3,
-            title: "flowers32",
-            description:"description3 description3 description3 description3",
-            img: "#",
-            size: [],
-            price: [800],
-            oldPrice: 1200
-          },
-          {
-            id:3,
-            title: "flowers31",
-            description:"description3 description3 description3 description3",
-            img: "#",
-            size: ["large"],
-            price: [800, 1500],
-            oldPrice: 1200
-          },
-        ]
-    },
-      'category2': {
-        isActive: true, 
-        goods: [
-          {
-            id:4,
-            title: "flowers4",
-            description:"description4 description4 description4 description4",
-            img: "#",
-            size: ["small","large"],
-            price: [780, 1080],
-          },
-          {
-            id:5,
-            title: "flowers5",
-            description:"description5 description5 description5 description5",
-            img: "#",
-            size: ["small", "medium", "large"],
-            price: [500, 800, 1000],
-            oldPrice: 700
-          },
-          {
-            id:6,
-            title: "flowers6",
-            description:"description6 description6 description6 description6",
-            img: "#",
-            size: ['small', "large"],
-            price: [45000, 67000],
-            oldPrice: 80000
-          }, 
-          {
-            id:4,
-            title: "flowers4",
-            description:"description4 description4 description4 description4",
-            img: "#",
-            size: ["small","large"],
-            price: [780, 1080],
-            oldPrice: 1000
-          },
-          {
-            id:5,
-            title: "flowers5",
-            description:"description5 description5 description5 description5",
-            img: "#",
-            size: ["small", "medium", "large"],
-            price: [500, 800, 1000],
-            oldPrice: 700
-          },
-          {
-            id:6,
-            title: "flowers6",
-            description:"description6 description6 description6 description6",
-            img: "#",
-            size: ['small', "large"],
-            price: [45000, 67000],
-            oldPrice: 80000
-          },  
-        ]
-          
-      },
-      'category3': {
-        isActive: true, 
-        goods: [
-          {
-            id:7,
-            title: "flowers7",
-            description:"description7 description7 description7 description7",
-            img: "#",
-            size: ["small", "large"],
-            price: [740, 1400],
-            oldPrice: 1200
-          },
-          {
-            id:8,
-            title: "flowers8",
-            description:"description8 description8 description8 description8",
-            img: "#",
-            size: ["small", "medium" ,"large"],
-            price: [2500, 3000, 3500],
-            oldPrice: 5000
-          },
-          {
-            id:9,
-            title: "flowers9",
-            description:"description9 description9 description9 description9",
-            img: "#",
-            size: ['small', "large"],
-            price: [7000, 9000],
-            oldPrice: 10000
-          },    
-          {
-            id:8,
-            title: "flowers8",
-            description:"description8 description8 description8 description8",
-            img: "#",
-            size: ["small", "medium" ,"large"],
-            price: [2500, 3000, 3500],
-            oldPrice: 5000
-          },
-          {
-            id:8,
-            title: "flowers8",
-            description:"description8 description8 description8 description8",
-            img: "#",
-            size: ["small", "medium" ,"large"],
-            price: [2500, 3000, 3500],
-            oldPrice: 5000
-          },
-        ]
-      },
-    },
+    goods: {},
 
     addedGoods: [  ]
   },
@@ -201,7 +41,7 @@ const Inventories = {
       state.modal.price_size = []
       state.modal.title = info.title;
       state.modal.description = info.description;
-      state.modal.img = info.img
+      state.modal.image = info.image
       state.modalPrice = info.price[0];
       for (let i = 0; i < info.size.length; i++ ){
         let price_size = [];
@@ -218,7 +58,7 @@ const Inventories = {
     ADD_TO_MODAL_ADDED(state, added){
       state.modalAdded.title = added.title,
       state.modalAdded.price = added.price,
-      state.modalAdded.img = added.img
+      state.modalAdded.image = added.image
     },
 
     ADD_TO_BASKET(state, goods){
@@ -275,15 +115,7 @@ const Inventories = {
       state.goods = goods
     },
 
-    PARCING(state){
-      state.Ngoods = {}
-      let put = function(key, value) {
-        this.container[key] = value;
-     }
-      // for (i of state.goods){
-      //   state.Ngoods.put(i)
-      // }
-    }
+
 
 
   },
@@ -300,8 +132,7 @@ const Inventories = {
         'https://ulanbek.pythonanywhere.com/api/items/flowers/?format=json'
       )
       const goods = await res.json()
-      // ctx.commit('UPDATE_ALL_GOODS', goods)
-      // ctx.commit('PARCING', goods)
+      ctx.commit('UPDATE_ALL_GOODS', goods)
     }
   },
   getters: {
