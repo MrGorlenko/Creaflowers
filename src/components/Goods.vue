@@ -4,10 +4,9 @@
     v-for="(goods, category) in categories" :key="goods"
     >
     <h2 class=" goods__category">{{category}}</h2>
-    <!-- <div 
+    <div 
     class="goods__products align-items-start d-lg-flex flex-wrap" 
-    v-if='goods.isActive'
-    > -->
+    >
       <div @click="getInfo(item, item.size[0])"
        class='goods__item d-lg-block d-none'
         v-for='item in goods.goods' :key=item>
@@ -62,7 +61,7 @@
           <!-- </div> -->
         </div>  
       <!-- Mobile -->
-      <!-- </div> -->
+      </div>
         <!--  -->
     </div>
   </div>

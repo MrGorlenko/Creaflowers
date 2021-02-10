@@ -4,9 +4,9 @@
     >
     
     <h2 class=" goods__category">{{this.$router.currentRoute._rawValue.params.id}}</h2>
-  <div class=" goods__products align-items-lg-start d-none d-lg-flex flex-wrap">
+  <!-- <div class=" goods__products align-items-lg-start d-none d-lg-flex flex-wrap"> -->
     <!-- <h1>AAA</h1> -->
-    
+    <div class="goods__products align-items-start d-lg-flex flex-wrap">
     <div @click="getInfo(item, item.size[0])"
        class='goods__item d-lg-block d-none'
         v-for='item in categories[this.$router.currentRoute._rawValue.params.id].goods' 
@@ -24,7 +24,7 @@
             </div>
           </div>
      </div>
-  </div>
+  <!-- </div> -->
 
 
     <div @click="mobileModalActivate();getInfo(item, item.size[0])" 
@@ -58,11 +58,12 @@
               </span>
             </div>
           <!-- </div> -->
-        </div>  
+        </div> 
+        </div> 
       <!-- </div> -->
   </div>
   </div>
-<Footer/>
+<!-- <Footer/> -->
 
 </template>
 

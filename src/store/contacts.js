@@ -2,8 +2,8 @@ const Contacts = {
   state: {
     Contacts:[
       {
-        general: '110000, Москва, ул. Lorem ipsum amed dolor, офис',
-        phone: '+7 000 000 000 000'
+        general: '110000, Москва, Адрес: Рижская площадь, 9, стр. 1',
+        phone: '+7(951)-567-72-66'
       },
     ],
     SocialFooter: [

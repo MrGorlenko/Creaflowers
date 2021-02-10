@@ -11,9 +11,10 @@
     <ModalAdded/>
     <ModileMobileDark/>
     <ModalAddedMobile/>
+    <ModalMobile/>
     <div v-if='BasketActive==false'  class="base">
       <router-view/>
-      <!-- <Footer/> -->
+      <Footer/>
     </div>
     
   </div>

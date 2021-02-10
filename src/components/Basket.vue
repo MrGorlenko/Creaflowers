@@ -194,7 +194,7 @@ export default {
     width: calc(100% - 130px);
     margin-bottom: 0;
     text-align: end;
-    height: 22px;
+    min-height: 2px;
     margin-top: 14px;
     font-weight: 600;
     font-size: 20px;
@@ -259,7 +259,7 @@ export default {
       margin-bottom: 38px;
     }
     &__price{
-      min-height: 45px;
+      min-height: 5px;
       display: flex;
       // align-items: end;
       // justify-content: flex-end;

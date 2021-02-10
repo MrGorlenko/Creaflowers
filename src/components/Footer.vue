@@ -7,7 +7,7 @@
         :key=info
         class='Footer__contacts'>
           <p class='Footer__general'>{{info.general}}</p> 
-          <p class="Footer__phone">{{info.phone}}</p>
+          <a :href="'tel:' + info.phone " class="Footer__phone d-block">{{info.phone}}</a>
         </div>
         <div class="Footer__links d-flex 
         align-items-center flex-wrap">
@@ -158,6 +158,7 @@ export default {
      
     &__phone, &__general{
      color: #fff;
+     text-align: start;
     }
     &__link{
      background: rgba(255, 255, 255, 0.09);

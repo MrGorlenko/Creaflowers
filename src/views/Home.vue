@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <Goods/>
-    <Footer/>
+    <!-- <Footer/> -->
     <ModalMobile/>
   </div>
 </template>
