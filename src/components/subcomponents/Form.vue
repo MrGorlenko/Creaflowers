@@ -156,7 +156,8 @@
       <input
           class='Form__time'
           @input='setTheTime(time)'
-          type="time" v-model='time'>
+          type="time" v-model='time'
+          placeholder="Время">
     </div>
 
     <div class='Form__input d-flex d-lg-none justify-content-between CustomInput__dateTime'>
@@ -180,15 +181,16 @@
         <label
             :class="{'CustomInput__label_focused': timeInput==true,
         'CustomInput__label_blur': timeInput==false}"
-            class='CustomInput__label' for="">Время</label>
-        <label class='CustomInput__date' v-if='time!=""' for="">{{ time }}</label>
-        <input
-            @focus='onFocusTime'
-            @blur="onBlurTime"
-            v-model='time'
-            type="time"
-            @input="setTheTime(time);"
-            class='CustomInput__input'
+        class='CustomInput__label' for="">Время</label>
+        <label class='CustomInput__date' v-if='time!=""' for="">{{time}}</label>
+        <input 
+          @focus='onFocusTime'
+          @blur="onBlurTime"
+          v-model='time' 
+          type="time"
+          @input="setTheTime(time);"
+          class='CustomInput__input'
+          placeholder="Время"
         >
       </div>
 
@@ -233,9 +235,10 @@
             </div> -->
 
 
-      <div class='d-flex align-items-center Form__unknownAdress'>
-        <p v-if='Carrier && Present'>Узнать адрес у получателя</p>
-        <input @click='callForAdress(address)' v-if='Carrier && Present' type="checkbox">
+
+      <div v-if='Carrier && Present' class='d-flex align-items-center Form__unknownAdress'>
+        <p :class="{'d-none': !Carrier && !Present}" v-if='Carrier && Present'>Узнать адрес у получателя</p>
+        <input :class="{'d-none': !Carrier && !Present}" @click='callForAdress(address)' v-if='Carrier && Present'  type="checkbox">
       </div>
 
     </div>
@@ -669,8 +672,11 @@ export default {
   height: 56px;
   min-height: 56px;
 
-  &__dateTime {
-    input {
+
+  &__dateTime{
+    input{
+      border: 1px solid rgba(0, 0, 0, 0.5);
+      border-radius: 10px;
       // background: #fff;
       color: #fff;
     }
@@ -717,7 +723,12 @@ export default {
     width: 100%;
     border: none;
     padding-left: 16px;
-    border-bottom: 1px solid rgba(0, 0, 0, .25);
+    height: 60%;
+    margin-top: 40%;
+    // height: 100%;
+    // border: 1px solid rgba(0, 0, 0, 0.5);
+    // border-radius: 10px;
+    // border-bottom: 1px solid rgba(0,0,0,.25);
     z-index: 10;
     background: none;
   }
@@ -727,7 +738,7 @@ export default {
   span {
     background: none;
   }
-
+  
   label {
     left: 25px;
     line-height: 17px;
@@ -738,73 +749,64 @@ export default {
   }
 }
 
-.Form {
-  width: calc(#{$innerBasketWidth} - 20px);
-
-  input {
-    outline: none !important;
-    border-radius: 0 !important;
-  }
-
-  position: relative;
-
-  &__title {
-    letter-spacing: 0.02em;
-    font-weight: bold;
-    font-size: 24px;
-    line-height: 32px;
-    text-align: start;
-    color: #191919;
-    width: 520px;
-    margin-left: 20px;
-  }
-
-  &__date, &__time {
-    height: 64px;
-    border-radius: 0px;
-    // border: 1px solid #E1E1E1;
-    margin-bottom: 16px;
-    background: none;
-  }
-
-  &__date, &__time {
-    border: none;
-    border-bottom: 1px solid rgba(0, 0, 0, .25)
-    // background: none;
-    // display: flex;
-    // justify-content: center;
-    // align-items: center;
-  }
-
-  &__date {
-    width: 67%;
-  }
-
-  &__time {
-    width: 30%;
-  }
-
-  &__submitHolder {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    z-index: 100;
-  }
-
-  &__input {
-    // width: 100%;
-    // border: 1px solid #E1E1E1;
-    // border-radius: 6px;
-    // height: 64px;
-    margin-bottom: 16px;
-    // color: #000;
-  }
-
-  &__unknownAdress {
-    p {
-      margin-bottom: 0;
-      margin-right: 10px;
+  .Form{
+    width: calc(#{$innerBasketWidth} - 20px) ;
+    input{
+      outline: none !important;
+      // border-radius: 0 !important;
+    }
+    position: relative;
+    &__title{
+      letter-spacing: 0.02em;
+      font-weight: bold;
+      font-size: 24px;
+      line-height: 32px;
+      text-align: start;
+      color: #191919;
+      width: 520px;
+      margin-left: 20px;
+    }
+    &__date, &__time{
+      height: 64px;
+      border-radius: 0px;
+      // border: 1px solid #E1E1E1;
+      margin-bottom: 16px;
+      background: none;
+    }
+    &__date, &__time{
+      border: none;
+      border-bottom: 1px solid rgba(0,0,0,.25)
+      // background: none;
+      // display: flex;
+      // justify-content: center;
+      // align-items: center;
+    }
+    &__date{
+      width: 67%;
+    }
+    &__time{
+      width: 30%;
+    }
+    &__submitHolder{
+      position: fixed;
+      bottom: 0;
+      left:0;
+      width: 100%;
+      z-index: 100;
+    }
+    &__input{
+      // width: 100%;
+      // border: 1px solid #E1E1E1;
+      // border-radius: 6px;
+      // height: 64px;
+      margin-bottom: 16px;
+      // color: #000;
+    }
+    &__unknownAdress{
+      p{
+        margin-bottom: 0;
+        margin-right: 10px;
+      }
     }
   }
 
@@ -823,6 +825,10 @@ export default {
 
     select {
       border: 1px solid #E1E1E1;
+      border-radius: 6px;
+      margin-bottom: 52px;
+      margin-top: 0px;
+
     }
 
     &::after {

@@ -13,6 +13,13 @@
     v-for="(goods, category) in categories" :key="category">
       <p class=''>{{category}}</p>
     </button>
+    
+
+    <div>
+      <!-- {{nCategories[0]}} -->
+      <!-- {{parcing()}} -->
+    </div>
+    
   </div>
 </template>
 
@@ -23,10 +30,11 @@ export default {
   computed: {
     ...mapState({
       categories: state => state.Inventories.goods,
+      nCategories: state => state.Inventories.Ngoods
     })
   },
   methods: {
-    ...mapMutations(['ACTIVATE_CAT', 'ACTIVATE_ALL']),
+    ...mapMutations(['ACTIVATE_CAT', 'ACTIVATE_ALL', 'PARCING']),
     toggleCat(cat){
       this.ACTIVATE_CAT(cat)
       this.all = false
@@ -34,6 +42,9 @@ export default {
     activateAll(){
       this.ACTIVATE_ALL()
       this.all = true
+    },
+    parcing(){
+      this.PARCING()
     }
   },
   data(){
