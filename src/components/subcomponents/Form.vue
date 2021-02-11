@@ -659,11 +659,11 @@ export default {
 
 .CustomInput__dateTime {
   .CustomInput:first-child {
-    width: 70%;
+    width: 65%;
   }
 
   .CustomInput:last-child {
-    width: 20%;
+    width: 25%;
   }
 }
 
