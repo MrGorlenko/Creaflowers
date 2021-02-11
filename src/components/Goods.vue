@@ -310,7 +310,7 @@ width: 23%;
         font-weight: 600;
         font-size: 22px;
         color: #FFFFFF;
-        width: 70%;
+        width: 65%;
 
       }
     }
