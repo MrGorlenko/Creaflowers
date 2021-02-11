@@ -147,10 +147,9 @@ export default {
       text-align: center;
       color: #000000;
       font-weight: 600;
-      font-size: 15px;
+      font-size: 13px;
       line-height: 20px;
-      min-height: 65px;
-      height: 65px;
+      min-height: 50px;
       margin-top: 12px;
       margin-bottom: 8px;
     }
