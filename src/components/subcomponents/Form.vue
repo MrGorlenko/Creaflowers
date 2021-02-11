@@ -1,5 +1,5 @@
 <template>
-  <form id='form' class="Form"  method="post">
+  <form id='form' class="Form" @submit.prevent="Final" method="post">
     <p class='Form__title'>Order</p>
     <!-- <select name="" id="">
       <option value="">Apple Pay</option>
@@ -276,7 +276,7 @@
 
     <div class="Form__submitHolder d-flex justify-content-center
     align-items-center">
-      <button class='Form__submit' @click="addOrder()" v-if='TotalValid==true'>
+      <button class='Form__submit' v-if='TotalValid==true'>
         Заказать на сумму {{ Result }}
       </button>
       <button class='Form__submit Form__submit_passive' disabled v-else>
@@ -578,38 +578,6 @@ export default {
           })
       alert('Спасибо! Покупка оформлена!')
     },
-    addOrder() {
-      axios({
-        method: 'post',
-        url: 'http://127.0.0.1:8000/api/orders/create/',
-        data: {
-          carrier: this.Carrier,
-          present: this.Present,
-          name: this.OrdererName,
-          receiver_name: this.ReceiverName,
-          phone: this.phone,
-          receiver_phone: this.receiverPhone,
-          date: this.date,
-          time: this.time,
-          address: this.address,
-          comments: this.comments,
-          confirm_address: this.confirm_address,
-          total: this.Result,
-
-        }
-      })
-          .then(
-            function(res){
-              console.log(res)
-              this.Final()
-            }
-
-          )
-          .catch((error) => {
-            console.log(error)
-          })
-    },
-
 
     // ВАЛИДАЦИЯ
 
