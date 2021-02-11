@@ -16,7 +16,11 @@
       <router-view/>
       <Footer/>
     </div>
-    
+    <div class="Load d-flex justify-content-center align-items-center" v-if='Load == true'>
+
+      <p>Подождите, Creaflowers грузится :)</p>
+
+    </div>
   </div>
   
   <!-- <router-view/> -->
@@ -55,7 +59,8 @@ export default {
   },
     computed: {
     ...mapState({
-      BasketActive: state => state.Interface.Basket.isActive
+      BasketActive: state => state.Interface.Basket.isActive,
+      Load: state => state.Inventories.load
     }),
     ...mapGetters(['allGoods'])
   },
@@ -91,6 +96,16 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+}
+
+.Load{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 9999;
+  background: #fff;
 }
 
 #nav {

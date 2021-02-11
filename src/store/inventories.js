@@ -1,5 +1,6 @@
 const Inventories = {
   state: {
+    load: true,
     finalPrice: 0, 
     modalPrice: 0,
     basket: [],
@@ -112,7 +113,17 @@ const Inventories = {
     },
 
     UPDATE_ALL_GOODS(state, goods){
-      state.goods = goods
+      // let loader = function(){
+      //   state.load = false 
+      // }
+      // state.goods = await goods
+      async function fn(){
+        state.goods = goods
+      }
+
+      fn().then(setTimeout( () => state.load = false , 1500))
+
+      // await new Promise((resolve, reject) => setTimeout(loader(), 4500))
     },
 
 
