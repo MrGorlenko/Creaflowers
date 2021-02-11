@@ -16,9 +16,13 @@
       <router-view/>
       <Footer/>
     </div>
-    <div class="Load d-flex justify-content-center align-items-center" v-if='Load == true'>
+    <div class="Load d-flex justify-content-center align-items-center flex-column" v-if='Load == true'>
 
+      <!-- <p>Подождите, Creaflowers грузится :)</p> -->
+      <Loader/>
+      <!-- <lottie-player src="https://assets6.lottiefiles.com/packages/lf20_7gaky02k.json" background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay></lottie-player> -->
       <p>Подождите, Creaflowers грузится :)</p>
+      <!-- <lottie-player src="https://lottiefiles.com/share/7gaky02k" background="transparent"  speed="1"  style="width: 300px; height: 300px;" loop controls autoplay></lottie-player> -->
 
     </div>
   </div>
@@ -28,6 +32,7 @@
 
 
 <script>
+import Loader from '@/components/subcomponents/Loader.vue'
 import Navigation from '@/components/Navigation.vue'
 import Goods from '@/components/Goods.vue'
 import Modal from '@/components/Modal.vue'
@@ -44,6 +49,9 @@ import {mapState, mapGetters, mapActions} from 'vuex'
 export default {
   name: 'Home',
   components: {
+
+    Loader,
+
     Navigation,
     Goods,
     Modal,

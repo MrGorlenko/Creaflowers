@@ -69,7 +69,6 @@ export default {
     checkout.setAttribute('src', 'https://widget.cloudpayments.ru/bundles/checkout')
     document.head.appendChild(checkout)
 
-
   },
   methods: {
     scrollTop() {
@@ -98,6 +97,10 @@ export default {
     text-align: start;
     line-height: 24px;
     width: 100%;
+    color: #000;
+    &:hover{
+      color: #000;
+    }
   }
 
   &__phone {

@@ -120,6 +120,7 @@ const Inventories = {
       async function fn(){
         state.goods = goods
       }
+      // fn()
 
       fn().then(setTimeout( () => state.load = false , 1500))
 
