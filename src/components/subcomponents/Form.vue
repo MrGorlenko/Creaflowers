@@ -567,7 +567,7 @@ export default {
       console.log(result)
       axios({
         method: 'post',
-        url: 'http://localhost:8000/api/order/flowers/create/',
+        url: 'https://ulanbek.pythonanywhere.com/api/order/flowers/create/',
         data: {
           goods: result
         }
