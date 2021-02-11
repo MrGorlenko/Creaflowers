@@ -149,7 +149,7 @@ export default {
       font-weight: 600;
       font-size: 13px;
       line-height: 20px;
-      min-height: 50px;
+      min-height: 60px;
       margin-top: 12px;
       margin-bottom: 8px;
     }

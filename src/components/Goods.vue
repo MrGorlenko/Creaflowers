@@ -156,7 +156,6 @@ export default {
     }
     &__item{
       width: $goodsWidthDesctop;
-      // margin-right: calc((#{$width100} -( #{$goodsWidthDesctop}*4))/3);
       margin-right: calc( 8% / 3 ) ;
       margin-bottom: 24px;
       border-radius: 12px;

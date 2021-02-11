@@ -276,7 +276,7 @@
 
     <div class="Form__submitHolder d-flex justify-content-center
     align-items-center">
-      <button class='Form__submit' @click="Final(); addOrder()" v-if='TotalValid==true'>
+      <button class='Form__submit' @click="addOrder()" v-if='TotalValid==true'>
         Заказать на сумму {{ Result }}
       </button>
       <button class='Form__submit Form__submit_passive' disabled v-else>
@@ -598,7 +598,13 @@ export default {
 
         }
       })
-          .then(res => console.log(res))
+          .then(
+            function(res){
+              console.log(res)
+              this.Final()
+            }
+
+          )
           .catch((error) => {
             console.log(error)
           })
