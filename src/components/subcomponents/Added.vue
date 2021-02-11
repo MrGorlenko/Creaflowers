@@ -150,6 +150,7 @@ export default {
       font-size: 15px;
       line-height: 20px;
       min-height: 65px;
+      height: 65px;
       margin-top: 12px;
       margin-bottom: 8px;
     }
