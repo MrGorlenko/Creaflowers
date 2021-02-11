@@ -168,7 +168,7 @@
             class='CustomInput__label' for="">Дата</label>
         <label class='CustomInput__date' v-if='date!=""' for="">{{ date }}</label>
         <input
-        
+
             @focus='onFocusDate'
             @blur="onBlurDate"
             v-model='date'
@@ -182,16 +182,16 @@
         <label
             :class="{'CustomInput__label_focused': timeInput==true,
         'CustomInput__label_blur': timeInput==false}"
-        class='CustomInput__label' for="">Время</label>
-        <label class='CustomInput__date' v-if='time!=""' for="">{{time}}</label>
-        <input 
-          @focus='onFocusTime'
-          @blur="onBlurTime"
-          v-model='time' 
-          type="time"
-          @input="setTheTime(time);"
-          class='CustomInput__input CustomInput__input_time'
-          placeholder="Время"
+            class='CustomInput__label' for="">Время</label>
+        <label class='CustomInput__date' v-if='time!=""' for="">{{ time }}</label>
+        <input
+            @focus='onFocusTime'
+            @blur="onBlurTime"
+            v-model='time'
+            type="time"
+            @input="setTheTime(time);"
+            class='CustomInput__input CustomInput__input_time'
+            placeholder="Время"
         >
       </div>
 
@@ -236,10 +236,10 @@
             </div> -->
 
 
-
       <div v-if='Carrier && Present' class='d-flex align-items-center Form__unknownAdress'>
         <p :class="{'d-none': !Carrier && !Present}" v-if='Carrier && Present'>Узнать адрес у получателя</p>
-        <input :class="{'d-none': !Carrier && !Present}" @click='callForAdress(address)' v-if='Carrier && Present'  type="checkbox">
+        <input :class="{'d-none': !Carrier && !Present}" @click='callForAdress(address)' v-if='Carrier && Present'
+               type="checkbox">
       </div>
 
     </div>
@@ -276,7 +276,7 @@
 
     <div class="Form__submitHolder d-flex justify-content-center
     align-items-center">
-      <button class='Form__submit' v-if='TotalValid==true'>
+      <button class='Form__submit' @click="payForGoods()" v-if='TotalValid==true'>
         Заказать на сумму {{ Result }}
       </button>
       <button class='Form__submit Form__submit_passive' disabled v-else>
@@ -291,6 +291,7 @@
 </template>
 
 <script>
+
 import SelectItem from '@/components/subcomponents/SelectItem.vue'
 import {mapGetters, mapActions, mapState, mapMutations} from 'vuex'
 import axios from "axios";
@@ -313,6 +314,27 @@ export default {
     }),
   },
   methods: {
+
+    payForGoods() {
+      console.log("PAYMENT METHOD")
+      var payments = new cp.CloudPayments({language: "en-US"});
+      payments.charge({ // options
+            publicId: 'pk_07f06c747bfe22034d124539f379c',
+            description: this.OrdererName,
+            amount: this.Result,
+            currency: 'RUB',
+            data: {
+              myProp: 'myProp value'
+            }
+          },
+          function (options) { // success
+            $('#checkout-result').text('Payment was successful');
+          },
+          function (reason, options) { // fail
+            $('#checkout-result').text('Payment failed');
+          });
+    },
+
     selectTheAddress(address) {
       this.PickUpAdress = address
     },
@@ -559,9 +581,6 @@ export default {
         console.log(good)
       })
 
-      // ВОТ ГДЕ ТО ТУТ ДОЛЖНА ПРОИСХОДИТЬ ОПЛАТА ТОВАРА
-      // ДЕНЬГАМИ И ПОТОМ ЗАПРОС УЛЕТАЕТ НА СЕРВЕР
-
 
       result.push({TOTAL: this.Result})
       console.log(result)
@@ -648,8 +667,8 @@ export default {
   min-height: 56px;
 
 
-  &__dateTime{
-    input{
+  &__dateTime {
+    input {
       border: 1px solid #E1E1E1;
       border-radius: 10px;
       // background: #fff;
@@ -713,7 +732,7 @@ export default {
   span {
     background: none;
   }
-  
+
   label {
     left: 25px;
     line-height: 17px;
@@ -724,66 +743,76 @@ export default {
   }
 }
 
-  .Form{
-    width: calc(#{$innerBasketWidth} - 20px) ;
-    input{
-      outline: none !important;
-      // border-radius: 0 !important;
+.Form {
+  width: calc(#{$innerBasketWidth} - 20px);
+
+  input {
+    outline: none !important;
+    // border-radius: 0 !important;
+  }
+
+  position: relative;
+
+  &__title {
+    letter-spacing: 0.02em;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 32px;
+    text-align: start;
+    color: #191919;
+    width: 520px;
+    margin-left: 20px;
+  }
+
+  &__date, &__time {
+    height: 64px;
+    border-radius: 0px;
+    // border: 1px solid #E1E1E1;
+    margin-bottom: 16px;
+    background: none;
+  }
+
+  &__date, &__time {
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, .25)
+    // background: none;
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
+  }
+
+  &__date {
+    width: 67%;
+  }
+
+  &__time {
+    width: 30%;
+  }
+
+  &__submitHolder {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+  }
+
+  &__input {
+    // width: 100%;
+    border: 1px solid #E1E1E1;
+    box-sizing: border-box;
+    border-radius: 10px;
+    margin-bottom: 16px;
+    // color: #000;
+  }
+
+  &__unknownAdress {
+    p {
+      margin-bottom: 0;
+      margin-right: 10px;
     }
-    position: relative;
-    &__title{
-      letter-spacing: 0.02em;
-      font-weight: bold;
-      font-size: 24px;
-      line-height: 32px;
-      text-align: start;
-      color: #191919;
-      width: 520px;
-      margin-left: 20px;
-    }
-    &__date, &__time{
-      height: 64px;
-      border-radius: 0px;
-      // border: 1px solid #E1E1E1;
-      margin-bottom: 16px;
-      background: none;
-    }
-    &__date, &__time{
-      border: none;
-      border-bottom: 1px solid rgba(0,0,0,.25)
-      // background: none;
-      // display: flex;
-      // justify-content: center;
-      // align-items: center;
-    }
-    &__date{
-      width: 67%;
-    }
-    &__time{
-      width: 30%;
-    }
-    &__submitHolder{
-      position: fixed;
-      bottom: 0;
-      left:0;
-      width: 100%;
-      z-index: 100;
-    }
-    &__input{
-      // width: 100%;
-      border: 1px solid #E1E1E1;
-      box-sizing: border-box;
-      border-radius: 10px;
-      margin-bottom: 16px;
-      // color: #000;
-    }
-    &__unknownAdress{
-      p{
-        margin-bottom: 0;
-        margin-right: 10px;
-      }
-    }
-  
+  }
+
 
   &__comments {
     width: 100%;
@@ -862,12 +891,13 @@ export default {
   input[type="date"], input[type="time"] {
     color: rgba(255, 255, 255, 0);
   }
-  .CustomInput{
-    &__dateTime{
+  .CustomInput {
+    &__dateTime {
       margin-bottom: 16px;
     }
-    &__input{
-      &_time, &_date{
+
+    &__input {
+      &_time, &_date {
         // margin-bottom: 16px;
         height: 56px;
         margin-top: 0;
@@ -898,11 +928,13 @@ export default {
     &__unknownAdress {
       height: 25px;
     }
-    &__date, &__time{
+
+    &__date, &__time {
       margin-bottom: 16px;
       height: 100%;
     }
-    &__input{
+
+    &__input {
       // width: 100%;
       border: 1px solid #E1E1E1;
       box-sizing: border-box;
