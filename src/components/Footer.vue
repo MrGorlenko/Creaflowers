@@ -19,8 +19,9 @@
         </div>
         <p class='Footer__copyright'>Copyright 2021 Creaflower</p>
       </div>
-      <div class="pr-0 col-7 d-none d-lg-flex justify-content-end">
-        <img src="@/assets/map.png" alt="" class="Footer__map">
+      <div class="Footer__mapWrapper pr-0 col-7 d-none d-lg-flex justify-content-end">
+        <!-- <img src="@/assets/map.png" alt="" class="Footer__map"> -->
+        <iframe class="Footer__map" src="https://yandex.ru/map-widget/v1/?um=constructor%3Ae792fd065822555c97bfbd0576e0b12e270e7e702d31b248218857825ee63a71&amp;source=constructor" width="500" height="359" frameborder="0"></iframe>
       </div>
     </div>
 
@@ -109,9 +110,26 @@ export default {
        margin-left: 12px;
      }
    }
+   &__mapWrapper{
+    
+      border-radius: 12px;
+    position: relative;
+    &::after{
+ background: linear-gradient(89.72deg, #FFFFFF 15.06%, rgba(255, 255, 255, 0) 40.12%);
+ position: absolute;
+ top: 0;
+ left: 0;
+ width: 30%;
+ height: 100%;
+ display: block;
+ content: '';
+ z-index: 5;
+    }
+   }
    &__map{
      object-fit: cover;
      width: 100%;
+    //  z-index: -1;
    }
    &__copyright{
      color:#000;
