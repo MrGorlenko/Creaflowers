@@ -173,10 +173,17 @@ export default {
      background-color: #000;
      padding-left: 0;
      padding-bottom: 26px;
+     &__phone{
+       text-decoration: underline;
+      //  color: #b5e8ff;
+     }
      
     &__phone, &__general{
      color: #fff;
      text-align: start;
+     &:hover{
+       color: #fff;
+     }
     }
     &__link{
      background: rgba(255, 255, 255, 0.09);
