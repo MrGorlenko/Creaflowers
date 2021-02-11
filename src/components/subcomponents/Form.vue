@@ -723,9 +723,9 @@ export default {
     width: 100%;
     border: none;
     padding-left: 16px;
-    height: 60%;
+    height: 100%;
     margin-top: 40%;
-    // height: 100%;
+    // height: 64px;
     // border: 1px solid rgba(0, 0, 0, 0.5);
     // border-radius: 10px;
     // border-bottom: 1px solid rgba(0,0,0,.25);
@@ -796,9 +796,9 @@ export default {
     }
     &__input{
       // width: 100%;
-      // border: 1px solid #E1E1E1;
-      // border-radius: 6px;
-      // height: 64px;
+      border: 1px solid #E1E1E1;
+      box-sizing: border-box;
+      border-radius: 10px;
       margin-bottom: 16px;
       // color: #000;
     }
