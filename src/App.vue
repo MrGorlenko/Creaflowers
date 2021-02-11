@@ -14,7 +14,7 @@
     <ModalMobile/>
     <div v-if='BasketActive==false'  class="base">
       <router-view/>
-      <Footer/>
+      <!-- <Footer/> -->
     </div>
     <div class="Load d-flex justify-content-center align-items-center flex-column" v-if='Load == true'>
 

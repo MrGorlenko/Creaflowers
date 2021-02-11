@@ -66,12 +66,17 @@
         <!--  -->
     </div>
   </div>
+   <Footer/>
 </template>
 
 <script>
+import Footer from '@/components/Footer.vue'
 import {mapGetters, mapActions, mapState, mapMutations} from 'vuex'
 export default {
   name: 'goods',
+  components: {
+    Footer
+  },
   computed: {
     ...mapState({
       categories: state => state.Inventories.goods,
