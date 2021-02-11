@@ -676,7 +676,7 @@ export default {
 
   &__dateTime{
     input{
-      border: 1px solid rgba(0, 0, 0, 0.5);
+      border: 1px solid #E1E1E1;
       border-radius: 10px;
       // background: #fff;
       color: #fff;

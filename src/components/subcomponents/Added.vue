@@ -207,6 +207,9 @@ export default {
     }
     .addedGoods{
       width: 100%;
+      &__item{
+        padding:0;
+      }
       &__price{
         // width:50%;
         display: flex;
