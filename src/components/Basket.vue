@@ -248,8 +248,8 @@ export default {
       margin-left: 25px;
     }
     &__button{
-      width: 30px;
-      height: 30px;
+      // width: 30px;
+      // height: 30px;
       border-radius: 10px;
       display: flex;
       align-items: center;
@@ -270,7 +270,7 @@ export default {
       position: relative;
       width:100%;
       min-height: 138px;
-
+      padding: 0;
       margin-bottom: 32px;
     }
   }

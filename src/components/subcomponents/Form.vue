@@ -160,7 +160,7 @@
           placeholder="Время">
     </div>
 
-    <div class='Form__input d-flex d-lg-none justify-content-between CustomInput__dateTime'>
+    <div class=' d-flex d-lg-none justify-content-between CustomInput__dateTime'>
       <div class=" CustomInput d-flex flex-column justify-content-end">
         <label
             :class="{'CustomInput__label_focused': dateInput==true,
@@ -168,12 +168,13 @@
             class='CustomInput__label' for="">Дата</label>
         <label class='CustomInput__date' v-if='date!=""' for="">{{ date }}</label>
         <input
+        
             @focus='onFocusDate'
             @blur="onBlurDate"
             v-model='date'
             type="date"
             @input="setTheDate(date);"
-            class='CustomInput__input'
+            class='CustomInput__input CustomInput__input_date'
         >
       </div>
 
@@ -189,7 +190,7 @@
           v-model='time' 
           type="time"
           @input="setTheTime(time);"
-          class='CustomInput__input'
+          class='CustomInput__input CustomInput__input_time'
           placeholder="Время"
         >
       </div>
@@ -887,6 +888,18 @@ export default {
   input[type="date"], input[type="time"] {
     color: rgba(255, 255, 255, 0);
   }
+  .CustomInput{
+    &__dateTime{
+      margin-bottom: 16px;
+    }
+    &__input{
+      &_time, &_date{
+        // margin-bottom: 16px;
+        height: 56px;
+        margin-top: 0;
+      }
+    }
+  }
   .Form {
     width: 100%;
 
@@ -910,6 +923,18 @@ export default {
 
     &__unknownAdress {
       height: 25px;
+    }
+    &__date, &__time{
+      margin-bottom: 16px;
+      height: 100%;
+    }
+    &__input{
+      // width: 100%;
+      border: 1px solid #E1E1E1;
+      box-sizing: border-box;
+      border-radius: 10px;
+      margin-bottom: 16px;
+      // color: #000;
     }
   }
 }
