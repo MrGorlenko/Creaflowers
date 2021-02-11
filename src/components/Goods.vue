@@ -42,8 +42,9 @@
           <!-- АКТИВИРОВАТЬ КОГДА БУДУТ ЗАБИНЖЕНЫ КАРТИНКИ -->
 
           <!-- <div class="goods__info"> -->
+          <div class="goods__cost flex-row">
             <p class="goods__title">{{item.title}}</p>
-            <div class="goods__cost flex-start">
+            <!-- <div class="goods__cost flex-start"> -->
               <span class="d-flex align-items-center goods__cost_current">{{item.price[0]}} 
                 <!-- <svg width="11" height="14" viewBox="0 0 11 14" fill="#fff" xmlns="http://www.w3.org/2000/svg"><path d="M6.66164 8.68179H0.013916V7.27554H6.66164C7.27528 7.27554 7.78238 7.169 8.18295 6.95593C8.58352 6.7386 8.88181 6.44457 9.07784 6.07383C9.27386 5.69883 9.37187 5.27269 9.37187 4.79542C9.37187 4.31815 9.27386 3.89414 9.07784 3.5234C8.88181 3.1484 8.58352 2.85437 8.18295 2.6413C7.78238 2.42397 7.27528 2.31531 6.66164 2.31531H3.67017V14H2.08494V0.909058H6.66164C7.63323 0.909058 8.43437 1.0859 9.06505 1.4396C9.69573 1.79329 10.1645 2.26417 10.4713 2.85224C10.7781 3.44031 10.9315 4.08804 10.9315 4.79542C10.9315 5.50281 10.7781 6.15054 10.4713 6.7386C10.1645 7.32667 9.69573 7.79755 9.06505 8.15125C8.43437 8.50494 7.63323 8.68179 6.66164 8.68179ZM6.55937 9.90906V11.3153H0.013916V9.90906H6.55937Z" fill="#ffffff"/></svg> -->
               
@@ -110,7 +111,7 @@ export default {
   @import '@/vendor/interface.scss';
 
   .goods{
-    width: calc(1580px - #{$sideBarWidth});
+    width: 900px;
     margin: auto;
     &__wrapper{
       position: relative;
@@ -220,13 +221,13 @@ export default {
 
   @media (max-width: 1600px){
     .goods{
-      width: calc(1350px - #{$sideBarWidth});
+      width: calc(1350px - #{$sideBarWidth} - 150px);
     }
   }
 
   @media (max-width: 1352px){
     .goods{
-      width: calc(1150px - #{$sideBarWidth});
+      width: calc(1150px - #{$sideBarWidth} - 150px);
       &__item{
         min-height: auto;
         height: 35%;
@@ -279,7 +280,7 @@ export default {
         border-radius: 25px;
       }
       &__cost, &__title{
-        position: absolute;
+        // position: absolute;
         left: 16px;
       }
       &__cost{
