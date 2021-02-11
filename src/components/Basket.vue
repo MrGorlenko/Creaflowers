@@ -201,8 +201,9 @@ export default {
     color: #000000;
 
     svg{
-      min-height: 30px;
-      height: 30px;
+      min-height: 25px;
+      height: 25px;
+      margin-left: 5px;
     }
   }
   &__size{
