@@ -130,7 +130,7 @@ export default {
       bottom: -100vh;
     }
     &_active{
-      bottom: -5vh;
+      bottom: -10vh;
     }
     &__close{
       @include ModalMobileClose;

@@ -258,6 +258,9 @@ export default {
     &__basketTitle{
       margin-bottom: 38px;
     }
+    &__title{
+      font-size: 16px;
+    }
     &__price{
       min-height: 5px;
       display: flex;
@@ -265,6 +268,7 @@ export default {
       // justify-content: flex-end;
       align-items: center;
       margin-top: 36px;
+      font-size: 17px;
     }
     &__item{
       position: relative;
