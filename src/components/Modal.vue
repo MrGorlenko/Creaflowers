@@ -65,7 +65,7 @@
 
       <button class='Modal__addToBasket'
       @click="addToBasket(modal.title, modalPrice, modal.image, modalSize);
-      modalDeactivate();pixelClick()"
+      modalDeactivate();pixelBasket()"
       >
         Добавить в корзину
       </button>
@@ -131,7 +131,7 @@ export default {
     togglePrice(price){
       this.SELECT_PRICE(price)
     },
-    pixelClick(){
+    pixelBasket(){
       fbq('track', 'AddToCart', {
         value: this.modalPrice,
         currency: 'RUB',

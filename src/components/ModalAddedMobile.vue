@@ -23,7 +23,7 @@
       <h3 class='ModalAddedMobile__title'>{{modalAdded.title}}</h3>
       <!-- <p class='ModalAddedMobile__description'>Description</p> -->
       <button class='ModalAddedMobile__addToBasket'
-      @click="closeModalMobile(); pixelClick();
+      @click="closeModalMobile(); pixelBasket();
       addToBasket(modalAdded.title, modalAdded.price, modalAdded.image)"
       >
         Добавить в корзину
@@ -71,7 +71,7 @@ export default {
   
   },
   methods: {
-    pixelClick(){
+    pixelBasket(){
       fbq('track', 'AddToCart', {
         value: this.modalPrice,
         currency: 'RUB',

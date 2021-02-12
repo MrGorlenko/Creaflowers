@@ -31,7 +31,7 @@
 
         <button class='modalAdded__addToBasket'
           @click='addToBasket(modalAdded.title, modalAdded.price, modalAdded.image); 
-          closeModalAdded(); pixelClick()()'>
+          closeModalAdded(); pixelBasket()'>
           Добавить в корзину
         </button>
       </div>
@@ -69,7 +69,7 @@ export default {
 
   },
   methods: {
-    pixelClick(){
+    pixelBasket(){
       fbq('track', 'AddToCart', {
         value: this.modalPrice,
         currency: 'RUB',

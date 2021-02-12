@@ -13,9 +13,9 @@
         v-for='item in categories[this.$router.currentRoute._rawValue.params.id].goods' 
         :key=item>
         <img @click='
-        pixelClick(item.title, item.price[0]);
+        pixelBasket(item.title, item.price[0]);
         addToBasket(item.title, item.price[0], item.image, item.size[0])' src="@/assets/toBasket.svg" alt="" class="goods__toBasket">
-        <img @click='modalActivate()' src="@/assets/toModal.svg" alt="" class="goods__toModal">
+        <img @click='modalActivate();pixelModal(item.title, item.price[0])' src="@/assets/toModal.svg" alt="" class="goods__toModal">
 
 
         <img class='goods__img' :src="item.image" alt="FLOWER"> 
@@ -121,14 +121,22 @@ export default {
     mobileModalActivate(){
       this.OPEN_MODAL_MOBILE()
     },
-    pixelClick(){
-       fbq('track', 'AddToCart', {
+    pixelBasket(title, price){
+      fbq('track', 'AddToCart', {
         value: price,
         currency: 'RUB',
         content_type: 'product',
         content_name: title,
       })
     },
+    pixelModal(title, price){
+      fbq('track', 'ViewContent', {
+        value: price,
+        currency: 'RUB',
+        content_type: 'product',
+        content_name: title
+      })
+    }
   },
   data() {
     return {

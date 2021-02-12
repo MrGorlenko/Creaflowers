@@ -11,10 +11,10 @@
        class='goods__item d-lg-block d-none'
         v-for='item in goods.goods' :key=item>
         <img @click='
-        pixelClick(item.title, item.price[0]);
+        pixelBasket(item.title, item.price[0]);
         addToBasket(item.title, item.price[0], item.image, item.size[0])' 
         src="@/assets/toBasket.svg" alt="" class="goods__toBasket">
-        <img @click='modalActivate();pixelBasket(item.title, item.price[0], category)' src="@/assets/toModal.svg" alt="" class="goods__toModal">
+        <img @click='modalActivate();pixelModal(item.title, item.price[0], category)' src="@/assets/toModal.svg" alt="" class="goods__toModal">
 
 
         <img class='goods__img' :src="item.image" alt="FLOWER"> 
@@ -80,21 +80,6 @@ export default {
   components: {
     Footer
   },
-    mounted() {
-
-//     !function(f,b,e,v,n,t,s)
-// {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-// n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-// if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-// n.queue=[];t=b.createElement(e);t.async=!0;
-// t.src=v;s=b.getElementsByTagName(e)[0];
-// s.parentNode.insertBefore(t,s)}(window, document,'script',
-// 'https://connect.facebook.net/en_US/fbevents.js');
-// fbq('init', '3739894582790910');
-// fbq('track', 'PageView');
-
-
-  },
   computed: {
     ...mapState({
       categories: state => state.Inventories.goods,
@@ -125,7 +110,7 @@ export default {
     mobileModalActivate(){
       this.OPEN_MODAL_MOBILE()
     },
-    pixelClick(title, price){
+    pixelBasket(title, price){
       fbq('track', 'AddToCart', {
         value: price,
         currency: 'RUB',
@@ -133,13 +118,12 @@ export default {
         content_name: title,
       })
     },
-    pixelBasket(title, price, cat){
+    pixelModal(title, price){
       fbq('track', 'ViewContent', {
         value: price,
         currency: 'RUB',
         content_type: 'product',
-        content_name: title,
-        content_category: cat
+        content_name: title
       })
     }
 

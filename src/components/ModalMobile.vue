@@ -37,7 +37,7 @@
       <button class=' ModalMobile__addToBasket'
       @click="closeModalMobile(); 
       addToBasket(modal.title, modalPrice, modal.image, modalSize);
-      pixelClick()"
+      pixelBasket()"
       >
         Добавить в корзину {{modalPrice}} 
         <svg width="12" height="13" viewBox="0 0 13 14" fill="#fff" xmlns="http://www.w3.org/2000/svg">
@@ -112,7 +112,7 @@ export default {
 
   },
   methods: {
-  pixelClick(){
+  pixelBasket(){
       fbq('track', 'AddToCart', {
         value: this.modalPrice,
         currency: 'RUB',
