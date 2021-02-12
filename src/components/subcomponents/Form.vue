@@ -276,7 +276,7 @@
 
     <div class="Form__submitHolder d-flex justify-content-center
     align-items-center">
-      <button class='Form__submit' @click="payForGoods()" v-if='TotalValid==true'>
+      <button class='Form__submit' @click="payForGoods(); Purchase()" v-if='TotalValid==true'>
         Заказать на сумму {{ Result }}
       </button>
       <button class='Form__submit Form__submit_passive' disabled v-else>
@@ -314,6 +314,27 @@ export default {
     }),
   },
   methods: {
+
+    Purchase(){
+
+    fbq('track', 'Purchase', {
+      value: this.Result,
+      currency: 'RUB',
+      content_type: 'product',
+      content_name: this.Goods,
+      content_category: '{{category}}'
+  });
+
+      // this.Goods.forEach(function (good) {
+      //   mesne.Total = good[3] * good[1]
+      //   result.push(mesne)
+      //   mesne = {}
+      //   return result
+      // })
+
+
+
+    },
 
     payForGoods() {
       let fname = this.OrdererName

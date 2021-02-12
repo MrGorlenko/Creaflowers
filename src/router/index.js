@@ -11,9 +11,10 @@ const routes = [
     component: Home
   },
   {
-    path: '/.well-known/apple-developer-merchantid-domain-association',
-    name: 'pay',
-
+    // path: '/.well-known/apple-developer-merchantid-domain-association',
+    // name: 'pay',
+    // component: () => import('../.well-known/apple-developer-merchantid-domain-association')
+    // apple-developer-merchantid-domain-association
   },
   {
     path: '/about',
