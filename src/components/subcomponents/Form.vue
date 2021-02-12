@@ -329,27 +329,50 @@ export default {
           function (options) { // success
 
             alert('Спасибо! Покупка оформлена!')
-          },
-          function (reason, options) { // fail
-            let phone = this.phone
-            let name = this.OrdererName
-            let payment = []
-            payment.push(phone)
-            payment.push(name)
+          });
+          this.paymentDecline();
+          // function (reason, options) { // fail
+            // let phone = this.phone
+            // let name = this.OrdererName
+            // let payment = []
+            // payment.push(phone)
+            // payment.push(name)
+            // console.log(payment)
+            // this.paymentDecline();
+            // axios({
+            //   method: 'post',
+            //   url: 'http://127.0.0.1:8000/api/order/payment/check/',
+            //   data: {
+            //     payment: payment
+            //   }
+            // })
+            //     .then(res => console.log(res))
+            //     .catch((error) => {
+            //       console.log(error)
+            //     })
+            // alert('Платеж не прошел, повторите еще раз')
+          // });
+    },
 
-            axios({
+    paymentDecline(){
+      let phone = this.phone,
+      name =this.OrdererName,
+      payment = [phone, name]
+      console.log(payment)
+
+      axios({
               method: 'post',
               url: 'http://127.0.0.1:8000/api/order/payment/check/',
               data: {
                 payment: payment
               }
             })
-                .then(res => console.log(res))
-                .catch((error) => {
+            .then(res => console.log(res))
+            .catch((error) => {
                   console.log(error)
+                  alert('Платеж не прошел, повторите еще раз')
                 })
-            alert('Платеж не прошел, повторите еще раз')
-          });
+            // alert('Платеж не прошел, повторите еще раз')
     },
 
     selectTheAddress(address) {
@@ -579,8 +602,8 @@ export default {
 
       customer.name = this.OrdererName
       customer.name_of_receiver = this.ReceiverName
-      customer.phone = this.phone
-      customer.receiverPhone = this.receiverPhone
+      customer.phone = '+7' + this.phone
+      customer.receiverPhone = '+7' + this.receiverPhone
 
       customer.dateOfDelivery = this.date
       customer.timeOfDelivery = this.time
