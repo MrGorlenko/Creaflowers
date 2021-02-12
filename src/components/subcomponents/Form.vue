@@ -316,6 +316,12 @@ export default {
   methods: {
 
     payForGoods() {
+      let fname = this.OrdererName
+      let fphone = this.phone
+      let faddress = this.address
+      let fdate = this.date
+      let ftime = this.time
+
       var payments = new cp.CloudPayments({language: "en-US"});
       payments.charge({ // options
             publicId: 'pk_07f06c747bfe22034d124539f379c',
@@ -327,52 +333,33 @@ export default {
             }
           },
           function (options) { // success
+            let phone = fphone
+            let name = fname
+            let address = faddress
+            let date = fdate
+            let time = ftime
 
-            alert('Спасибо! Покупка оформлена!')
-          });
-          this.paymentDecline();
-          // function (reason, options) { // fail
-            // let phone = this.phone
-            // let name = this.OrdererName
-            // let payment = []
-            // payment.push(phone)
-            // payment.push(name)
-            // console.log(payment)
-            // this.paymentDecline();
-            // axios({
-            //   method: 'post',
-            //   url: 'http://127.0.0.1:8000/api/order/payment/check/',
-            //   data: {
-            //     payment: payment
-            //   }
-            // })
-            //     .then(res => console.log(res))
-            //     .catch((error) => {
-            //       console.log(error)
-            //     })
-            // alert('Платеж не прошел, повторите еще раз')
-          // });
-    },
+            let payment = [phone, name, address, date, time]
+            console.log(payment)
 
-    paymentDecline(){
-      let phone = this.phone,
-      name =this.OrdererName,
-      payment = [phone, name]
-      console.log(payment)
-
-      axios({
+            axios({
               method: 'post',
               url: 'http://127.0.0.1:8000/api/order/payment/check/',
               data: {
                 payment: payment
               }
             })
-            .then(res => console.log(res))
-            .catch((error) => {
+                .then(res => console.log(res))
+                .catch((error) => {
                   console.log(error)
-                  alert('Платеж не прошел, повторите еще раз')
                 })
-            // alert('Платеж не прошел, повторите еще раз')
+            alert('Спасибо! Покупка оформлена!')
+          },
+          function (reason, options) { // fail
+
+            alert('Платеж не прошел, повторите еще раз')
+          }
+      );
     },
 
     selectTheAddress(address) {
@@ -651,7 +638,8 @@ export default {
     }
 
 
-  },
+  }
+  ,
   data() {
     return {
       timeInput: false,
