@@ -73,7 +73,6 @@ export default {
   methods: {
     scrollTop() {
       var scroll = new SmoothScroll()
-// setTimeout(window.scrollTo(0,0), 150)
       scroll.animateScroll(0)
 
     }

@@ -158,7 +158,7 @@ $mobileNavigatorHeight: 87px;
   position: fixed;
   overflow-y: scroll;
   left:0;
-  height: 100vh;
+  height: 95vh;
   width: 100%;
   background: linear-gradient(179.96deg, #E3D6D4 50%, #FAF1ED 99.96%);
   border-radius: 16px 16px 0px 0px;
@@ -167,6 +167,9 @@ $mobileNavigatorHeight: 87px;
   justify-content: space-between;
   padding-bottom: 75px;
   transition: .5s ease;
+  &_active{
+    bottom: -6vh;
+  }
 }
 
 @mixin ModalMobileClose{

@@ -162,9 +162,10 @@ export default {
     &_passive{
       bottom: -100vh;
     }
-    &_active{
-      bottom: -10vh;
-    }
+    // &_active{
+    //   // bottom: -10vh;
+
+    // }
     &__close{
       @include ModalMobileClose;
     }
@@ -183,6 +184,10 @@ export default {
     }
     &__info{
       padding: 0 16px;
+      height: 40%;
+      // display: flex;
+      // flex-direction: column;
+      // justify-content: space-between;
     }
     &__label{
       @include SelectLabel;
