@@ -36,7 +36,8 @@
 
       <button class=' ModalMobile__addToBasket'
       @click="closeModalMobile(); 
-      addToBasket(modal.title, modalPrice, modal.image, modalSize)"
+      addToBasket(modal.title, modalPrice, modal.image, modalSize);
+      pixelClick()"
       >
         Добавить в корзину {{modalPrice}} 
         <svg width="12" height="13" viewBox="0 0 13 14" fill="#fff" xmlns="http://www.w3.org/2000/svg">
@@ -58,7 +59,8 @@
           :value='size'
           :model='picked'
           :currency='"руб."'
-           @click="togglePrice(size[0]); toggleSize(size[1]); deactivateSelect()"
+           @click="togglePrice(size[0]); toggleSize(size[1]); 
+           deactivateSelect()"
             > </SelectItem>
       </div>
     </div>
@@ -86,7 +88,38 @@ export default {
       modalSize: state => state.Interface.ModalSize
     })
   },
+  mounted() {
+
+    
+    !function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '3739894582790910');
+fbq('track', 'PageView');
+
+
+    fbq('track', 'ViewContent', {
+      value: this.modalPrice,
+      currency: 'RUB',
+      content_type: 'product',
+      content_name: this.modal.title,
+    })
+
+  },
   methods: {
+  pixelClick(){
+      fbq('track', 'AddToCart', {
+        value: this.modalPrice,
+        currency: 'RUB',
+        content_type: 'product',
+        content_name: this.modal.title,
+      })
+    },
     ...mapMutations(['CLOSE_MODAL_MOBILE', 'SELECT_PRICE', 
     'FINAL_PRICE', 'ADD_TO_BASKET', 'MODAL_DEACTIVATE', 'SET_SIZE']),
     closeModalMobile(){
