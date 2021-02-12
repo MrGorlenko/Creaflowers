@@ -276,7 +276,7 @@
 
     <div class="Form__submitHolder d-flex justify-content-center
     align-items-center">
-      <button class='Form__submit' @click="payForGoods()" v-if='TotalValid==true'>
+      <button class='Form__submit' @click="payForGoods();PurchasePixel()" v-if='TotalValid==true'>
         Заказать на сумму {{ Result }}
       </button>
       <button class='Form__submit Form__submit_passive' disabled v-else>
@@ -315,6 +315,14 @@ export default {
   },
   methods: {
 
+    PurchasePixel(){
+    fbq('track', 'InitiateCheckout', {
+      value: this.Result,
+      currency: 'RUB',
+      content_type: 'product',
+      content_name: this.Goods,
+      });
+    },
   
 
     payForGoods() {
