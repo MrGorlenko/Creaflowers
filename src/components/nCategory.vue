@@ -7,12 +7,14 @@
 
   <div v-if='load==true' class=" goods__products align-items-lg-start d-lg-flex flex-wrap">
     <!-- <h1>AAA</h1> -->
-    <div class="goods__products d-none align-items-start d-lg-flex flex-wrap">
+    <div class=" d-none align-items-start d-lg-flex flex-wrap">
     <div @click="getInfo(item, item.size[0])"
        class='goods__item d-lg-block d-none'
         v-for='item in categories[this.$router.currentRoute._rawValue.params.id].goods' 
         :key=item>
-        <img @click='addToBasket(item.title, item.price[0], item.image, item.size[0])' src="@/assets/toBasket.svg" alt="" class="goods__toBasket">
+        <img @click='
+        pixelClick(item.title, item.price[0]);
+        addToBasket(item.title, item.price[0], item.image, item.size[0])' src="@/assets/toBasket.svg" alt="" class="goods__toBasket">
         <img @click='modalActivate()' src="@/assets/toModal.svg" alt="" class="goods__toModal">
 
 
@@ -81,29 +83,27 @@ export default {
   async mounted(){
 
 
-    // let appending = function(){
-      // block.appendChild('span' , 'a')
-    // }
-
-    //     let checkout = document.createElement('script')
-    // checkout.setAttribute('src', 'https://widget.cloudpayments.ru/bundles/checkout')
-    // document.head.appendChild(checkout)
-
     this.fetchGoods().then( this.load = true )
 
-    // let load = function(){
-    //   this.fetchGoods();
-    // } 
 
-    // load().then( appending() )
+  },
+//   mounted() {
 
-  }, 
+//     !function(f,b,e,v,n,t,s)
+// {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+// n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+// if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+// n.queue=[];t=b.createElement(e);t.async=!0;
+// t.src=v;s=b.getElementsByTagName(e)[0];
+// s.parentNode.insertBefore(t,s)}(window, document,'script',
+// 'https://connect.facebook.net/en_US/fbevents.js');
+// fbq('init', '3739894582790910');
+// fbq('track', 'PageView');
+
+
+//   }, 
   methods: {
     ...mapActions(['fetchGoods']),
-    callRouter: function(){
-      // console.log(this.$router.currentRoute._rawValue.params.id)
-      // console.log(this.$router.currentRoute._rawValue.params)
-    },
     ...mapMutations(['ADD_TO_MODAL', 'ADD_TO_BASKET', 'MODAL_ACTIVATE',
      'SET_SIZE', 'OPEN_MODAL_MOBILE']),
     getInfo(info, size) {
@@ -120,7 +120,15 @@ export default {
 
     mobileModalActivate(){
       this.OPEN_MODAL_MOBILE()
-    }
+    },
+    pixelClick(){
+       fbq('track', 'AddToCart', {
+        value: price,
+        currency: 'RUB',
+        content_type: 'product',
+        content_name: title,
+      })
+    },
   },
   data() {
     return {
