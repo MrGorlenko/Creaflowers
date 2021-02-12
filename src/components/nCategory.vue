@@ -4,12 +4,10 @@
     >
     
     <h2 class=" goods__category">{{this.$router.currentRoute._rawValue.params.id}}</h2>
-    <!-- <div v-if='load==true'>
-      {{categories[this.$router.currentRoute._rawValue.params.id].goods}}
-    </div> -->
-  <div v-if='load==true' class=" goods__products align-items-lg-start d-none d-lg-flex flex-wrap">
+
+  <div v-if='load==true' class=" goods__products align-items-lg-start d-lg-flex flex-wrap">
     <!-- <h1>AAA</h1> -->
-    <div class="goods__products align-items-start d-lg-flex flex-wrap">
+    <div class="goods__products d-none align-items-start d-lg-flex flex-wrap">
     <div @click="getInfo(item, item.size[0])"
        class='goods__item d-lg-block d-none'
         v-for='item in categories[this.$router.currentRoute._rawValue.params.id].goods' 
@@ -37,8 +35,10 @@
 
           <img class='goods__img' :src="item.image" alt="FLOWER"> 
 
-            <p class="goods__title">{{item.title}}</p>
-            <div class="goods__cost flex-start">
+           
+            <div class="goods__cost w-100 flex-row 
+          align-items-start justify-content-around">
+               <p class="goods__title">{{item.title}}</p>
               <span class="d-flex align-items-center goods__cost_current">{{item.price[0]}} 
                 
               
@@ -236,6 +236,7 @@ export default {
       position: relative;
       // &__current, &_
       &_current{
+        width: auto;
         margin-right: 8px;
         font-weight: 600;
       }
@@ -307,11 +308,8 @@ export default {
         
         border-radius: 25px;
       }
-      &__cost, &__title{
-        position: absolute;
-        left: 16px;
-      }
       &__cost{
+         position: absolute;
         bottom: 40px;
         color: #FFFFFF;
         font-weight: 600;
@@ -324,7 +322,6 @@ export default {
       }
       &__title{
         
-        bottom: 68px;
         font-weight: 600;
         font-size: 28px;
         line-height: 32px;

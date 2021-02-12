@@ -65,7 +65,7 @@
 
       <button class='Modal__addToBasket'
       @click="addToBasket(modal.title, modalPrice, modal.image, modalSize);
-      modalDeactivate(); pixelClick()"
+      modalDeactivate();"
       >
         Добавить в корзину
       </button>
@@ -131,23 +131,44 @@ fbq('track', 'PageView');
     togglePrice(price){
       this.SELECT_PRICE(price)
     },
-    pixelClick(){
-      fbq('track', 'AddToCart', {
-        currency: 'RUB',
-        content_type: 'product',
-      })
-    },
+//     pixelClick(){
+//           !function(f,b,e,v,n,t,s)
+// {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+// n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+// if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+// n.queue=[];t=b.createElement(e);t.async=!0;
+// t.src=v;s=b.getElementsByTagName(e)[0];
+// s.parentNode.insertBefore(t,s)}(window, document,'script',
+// 'https://connect.facebook.net/en_US/fbevents.js');
+// fbq('init', '3739894582790910');
+// fbq('track', 'PageView');
+//       fbq('track', 'AddToCart', {
+//         currency: 'RUB',
+//         content_type: 'product',
+//       })
+//     },
     addToBasket(title, price, pic, size){
       let item = [title, price, pic , this.amount, size]
       this.ADD_TO_BASKET(item)
 
-      // fbq('track', 'AddToCart', {
-      //   value: price,
-      //   currency: 'RUB',
-      //   content_type: 'product',
-      //   content_name: title,
+      !function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '3739894582790910');
+fbq('track', 'PageView');
 
-      // })
+      fbq('track', 'AddToCart', {
+        value: price,
+        currency: 'RUB',
+        content_type: 'product',
+        content_name: title,
+
+      })
       // alert('Спасибо! ' + title + ' добавлен в корзину в количестве ' + this.amount +' шт.')
     },
     plusOne(){

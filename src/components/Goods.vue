@@ -42,7 +42,8 @@
           <!-- АКТИВИРОВАТЬ КОГДА БУДУТ ЗАБИНЖЕНЫ КАРТИНКИ -->
 
           <!-- <div class="goods__info"> -->
-          <div class="goods__cost flex-row align-items-start justify-content-around">
+          <div class="goods__cost w-100 flex-row 
+          align-items-start justify-content-around">
             <p class="goods__title d-flex">{{item.title}}</p>
             <!-- <div class="goods__cost flex-start"> -->
               <p class="d-flex align-items-center goods__cost_current">{{item.price[0]}} 
@@ -286,7 +287,6 @@ export default {
       }
       &__cost, &__title{
         // position: absolute;
-        left: 16px;
         line-height: 32px;
 
       }
@@ -306,7 +306,8 @@ export default {
                   background: #6709DE;
 border-radius: 100px;
 padding: 10px 12px;
-width: 23%;
+// width: 23%;
+width: auto;
         }
       }
       &__title{
