@@ -71,10 +71,10 @@ export default {
   methods: {
     pixelBasket(){
       fbq('track', 'AddToCart', {
-        value: this.modalPrice,
+        value: this.modalAdded.price,
         currency: 'RUB',
         content_type: 'product',
-        content_name: this.modal.title,
+        content_name: this.modalAdded.title,
       })
     },
     ...mapMutations(['ADD_TO_BASKET_ADDED', 'CLOSE_MODAL_ADDED']),

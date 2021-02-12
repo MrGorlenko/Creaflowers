@@ -30,7 +30,7 @@
   </div>
 
 
-    <div @click="mobileModalActivate();getInfo(item, item.size[0])" 
+    <div @click="mobileModalActivate();getInfo(item, item.size[0]);pixelModal(item.title, item.price[0])" 
         class="goods__itemM d-lg-none d-flex"
         v-for='item in categories[this.$router.currentRoute._rawValue.params.id].goods' :key=item>
 

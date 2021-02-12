@@ -14,7 +14,7 @@
         pixelBasket(item.title, item.price[0]);
         addToBasket(item.title, item.price[0], item.image, item.size[0])' 
         src="@/assets/toBasket.svg" alt="" class="goods__toBasket">
-        <img @click='modalActivate();pixelModal(item.title, item.price[0], category)' src="@/assets/toModal.svg" alt="" class="goods__toModal">
+        <img @click='modalActivate();pixelModal(item.title, item.price[0])' src="@/assets/toModal.svg" alt="" class="goods__toModal">
 
 
         <img class='goods__img' :src="item.image" alt="FLOWER"> 
@@ -30,7 +30,7 @@
 
       <!-- Mobile -->
 
-        <div @click="mobileModalActivate();getInfo(item, item.size[0])" 
+        <div @click="mobileModalActivate();getInfo(item, item.size[0]);pixelModal(item.title, item.price[0])" 
         class="goods__itemM d-lg-none d-flex"
         v-for='item in goods.goods' :key=item>
         <!-- ДЕАКТИВИРОВАТЬ КОГДА БУДУТ ЗАБИНЖЕНЫ КАРТИНКИ -->
