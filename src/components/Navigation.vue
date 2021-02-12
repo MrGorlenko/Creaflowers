@@ -4,8 +4,8 @@
    flex-column
    justify-content-between ">
 
-   <div class="navigation__logo flex-lg-center flex-start">
-     <img src="@/assets/logo.png" alt="">
+   <div class="navigation__logo d-flex flex-lg-center flex-start">
+     <img @click='scrollTop()' src="@/assets/logo.png" alt="">
     </div>
     <div class='w-100 d-flex flex-row flex-wrap align-items-center justify-content-around'>
 
@@ -62,7 +62,12 @@ export default {
     ...mapState({
       Links: state => state.Contacts.SocialSidebar,
       categories: state => state.Inventories.goods,
-    })
+    }),
+    scrollTop() {
+      var scroll = new SmoothScroll()
+      scroll.animateScroll(0)
+
+    }
   },
   data(){
     return {
