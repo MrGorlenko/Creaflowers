@@ -1,9 +1,9 @@
 <template>
   <!-- <div id="nav"> -->
-    <!-- <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link> -->
+  <!-- <router-link to="/">Home</router-link> |
+  <router-link to="/about">About</router-link> -->
   <!-- </div> -->
-    <div class="home">
+  <div class="home">
     <Navigation/>
     <Modal/>
     <BasketButton/>
@@ -12,7 +12,7 @@
     <ModileMobileDark/>
     <ModalAddedMobile/>
     <ModalMobile/>
-    <div v-if='BasketActive==false'  class="base">
+    <div v-if='BasketActive==false' class="base">
       <router-view/>
       <!-- <Footer/> -->
     </div>
@@ -26,7 +26,7 @@
 
     </div>
   </div>
-  
+
   <!-- <router-view/> -->
 </template>
 
@@ -46,6 +46,7 @@ import ModalAddedMobile from '@/components/ModalAddedMobile.vue'
 
 import BasketButton from '@/components/subcomponents/BasketButton.vue'
 import {mapState, mapGetters, mapActions} from 'vuex'
+
 export default {
   name: 'Home',
   components: {
@@ -65,48 +66,60 @@ export default {
 
     BasketButton
   },
-    computed: {
+  computed: {
     ...mapState({
       BasketActive: state => state.Interface.Basket.isActive,
       Load: state => state.Inventories.load
     }),
     ...mapGetters(['allGoods'])
   },
-  async mounted(){
+  async mounted() {
     this.fetchGoods();
-  }, 
-  mounted(){
-    !function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '3739894582790910');
-fbq('track', 'PageView');
+  },
+  mounted() {
+    !function (f, b, e, v, n, t, s) {
+      if (f.fbq) return;
+      n = f.fbq = function () {
+        n.callMethod ?
+            n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+      };
+      if (!f._fbq) f._fbq = n;
+      n.push = n;
+      n.loaded = !0;
+      n.version = '2.0';
+      n.queue = [];
+      t = b.createElement(e);
+      t.async = !0;
+      t.src = v;
+      s = b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t, s)
+    }(window, document, 'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '3739894582790910');
+    fbq('track', 'PageView');
   },
   methods: {
     ...mapActions(['fetchGoods']),
   }
-  
+
 }
 </script>
 
 
 <style lang="scss">
-  @import '@/vendor/interface.scss';
-  .base{
-    padding-left: $sideBarWidth;
-    min-height: 100vh;
-  }
+@import '@/vendor/interface.scss';
 
-  @media (max-width: 992px){
-    .base{
-      padding-left: $sideBarWidthMobile;
-    }
+.base {
+  padding-left: $sideBarWidth;
+  min-height: 100vh;
+}
+
+@media (max-width: 992px) {
+  .base {
+    padding-left: $sideBarWidthMobile;
   }
+}
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 #app {
   // font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -118,7 +131,7 @@ fbq('track', 'PageView');
   color: #2c3e50;
 }
 
-.Load{
+.Load {
   position: fixed;
   top: 0;
   left: 0;

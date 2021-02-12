@@ -316,7 +316,6 @@ export default {
   methods: {
 
     payForGoods() {
-      console.log("PAYMENT METHOD")
       var payments = new cp.CloudPayments({language: "en-US"});
       payments.charge({ // options
             publicId: 'pk_07f06c747bfe22034d124539f379c',
@@ -328,10 +327,28 @@ export default {
             }
           },
           function (options) { // success
-            $('#checkout-result').text('Payment was successful');
+
+            alert('Спасибо! Покупка оформлена!')
           },
           function (reason, options) { // fail
-            $('#checkout-result').text('Payment failed');
+            let phone = this.phone
+            let name = this.OrdererName
+            let payment = []
+            payment.push(phone)
+            payment.push(name)
+
+            axios({
+              method: 'post',
+              url: 'http://127.0.0.1:8000/api/order/payment/check/',
+              data: {
+                payment: payment
+              }
+            })
+                .then(res => console.log(res))
+                .catch((error) => {
+                  console.log(error)
+                })
+            alert('Платеж не прошел, повторите еще раз')
           });
     },
 
@@ -595,7 +612,6 @@ export default {
           .catch((error) => {
             console.log(error)
           })
-      alert('Спасибо! Покупка оформлена!')
     },
 
     // ВАЛИДАЦИЯ
