@@ -365,6 +365,7 @@ export default {
 
             axios({
               method: 'post',
+              
               url: 'https://ulanbek.pythonanywhere.com/api/order/payment/check/',
               data: {
                 payment: payment
