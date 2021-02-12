@@ -575,7 +575,7 @@ export default {
         if (this.OrdererName.length > 1 && this.ReceiverName.length > 2
             && this.phone.length == 14
             && this.date.length != 0 && this.time.length != 0
-            && this.address.length != 0) {
+            && this.PickUpAdress.length != 0) {
           return true, this.TotalValid = true
         } else {
           return false, this.TotalValid = false
@@ -584,7 +584,7 @@ export default {
         if (this.OrdererName.length > 1
             && this.phone.length == 14
             && this.date.length != 0 && this.time.length != 0
-            && this.address.length != 0) {
+            && this.PickUpAdress.length != 0) {
           return true, this.TotalValid = true
         } else {
           return false, this.TotalValid = false
@@ -608,6 +608,7 @@ export default {
       customer.dateOfDelivery = this.date
       customer.timeOfDelivery = this.time
       customer.address = this.address
+      customer.PickUpAdress = this.PickUpAdress
 
       result.push(customer)
 
