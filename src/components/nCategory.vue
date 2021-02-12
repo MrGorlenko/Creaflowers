@@ -4,7 +4,10 @@
     >
     
     <h2 class=" goods__category">{{this.$router.currentRoute._rawValue.params.id}}</h2>
-  <!-- <div class=" goods__products align-items-lg-start d-none d-lg-flex flex-wrap"> -->
+    <!-- <div v-if='load==true'>
+      {{categories[this.$router.currentRoute._rawValue.params.id].goods}}
+    </div> -->
+  <div v-if='load==true' class=" goods__products align-items-lg-start d-none d-lg-flex flex-wrap">
     <!-- <h1>AAA</h1> -->
     <div class="goods__products align-items-start d-lg-flex flex-wrap">
     <div @click="getInfo(item, item.size[0])"
@@ -24,27 +27,20 @@
             </div>
           </div>
      </div>
-  <!-- </div> -->
+  </div>
 
 
     <div @click="mobileModalActivate();getInfo(item, item.size[0])" 
         class="goods__itemM d-lg-none d-flex"
         v-for='item in categories[this.$router.currentRoute._rawValue.params.id].goods' :key=item>
-        <!-- ДЕАКТИВИРОВАТЬ КОГДА БУДУТ ЗАБИНЖЕНЫ КАРТИНКИ -->
-          <!-- <img class='goods__img' 
-          src="@/assets/goodExample.png"
-          alt=""> -->
-        <!-- ДЕАКТИВИРОВАТЬ КОГДА БУДУТ ЗАБИНЖЕНЫ КАРТИНКИ -->
 
-          <!-- АКТИВИРОВАТЬ КОГДА БУДУТ ЗАБИНЖЕНЫ КАРТИНКИ  -->
+
           <img class='goods__img' :src="item.image" alt="FLOWER"> 
-          <!-- АКТИВИРОВАТЬ КОГДА БУДУТ ЗАБИНЖЕНЫ КАРТИНКИ -->
 
-          <!-- <div class="goods__info"> -->
             <p class="goods__title">{{item.title}}</p>
             <div class="goods__cost flex-start">
               <span class="d-flex align-items-center goods__cost_current">{{item.price[0]}} 
-                <!-- <svg width="11" height="14" viewBox="0 0 11 14" fill="#fff" xmlns="http://www.w3.org/2000/svg"><path d="M6.66164 8.68179H0.013916V7.27554H6.66164C7.27528 7.27554 7.78238 7.169 8.18295 6.95593C8.58352 6.7386 8.88181 6.44457 9.07784 6.07383C9.27386 5.69883 9.37187 5.27269 9.37187 4.79542C9.37187 4.31815 9.27386 3.89414 9.07784 3.5234C8.88181 3.1484 8.58352 2.85437 8.18295 2.6413C7.78238 2.42397 7.27528 2.31531 6.66164 2.31531H3.67017V14H2.08494V0.909058H6.66164C7.63323 0.909058 8.43437 1.0859 9.06505 1.4396C9.69573 1.79329 10.1645 2.26417 10.4713 2.85224C10.7781 3.44031 10.9315 4.08804 10.9315 4.79542C10.9315 5.50281 10.7781 6.15054 10.4713 6.7386C10.1645 7.32667 9.69573 7.79755 9.06505 8.15125C8.43437 8.50494 7.63323 8.68179 6.66164 8.68179ZM6.55937 9.90906V11.3153H0.013916V9.90906H6.55937Z" fill="#ffffff"/></svg> -->
+                
               
               <svg style='margin-left:2px' width="13" height="14" viewBox="0 0 13 14" fill="#fff" xmlns="http://www.w3.org/2000/svg">
               <path d="M7.5291 8.87355H0.772705V7.19883H7.50353C8.08307 7.19883 8.56248 7.10295 8.94174 6.91119C9.321 6.71517 9.60225 6.4467 9.78549 6.10579C9.96873 5.76062 10.0603 5.36431 10.0603 4.91687C10.0603 4.47369 9.96873 4.07738 9.78549 3.72795C9.60225 3.37852 9.32313 3.10366 8.94813 2.90338C8.57313 2.69883 8.10012 2.59656 7.5291 2.59656H4.74217V14H2.77342V0.909058H7.5291C8.522 0.909058 9.35083 1.08803 10.0156 1.44599C10.6846 1.80394 11.1853 2.28548 11.5177 2.89059C11.8544 3.49571 12.0227 4.169 12.0227 4.91048C12.0227 5.66048 11.8523 6.3359 11.5113 6.93676C11.1747 7.53335 10.6719 8.00636 10.0028 8.35579C9.33805 8.70096 8.51347 8.87355 7.5291 8.87355ZM7.62498 9.97298V11.6541H0.772705V9.97298H7.62498Z" fill="#ffffff"/>
@@ -57,10 +53,9 @@
               </svg>
               </span>
             </div>
-          <!-- </div> -->
         </div> 
-        </div> 
-      <!-- </div> -->
+        <!-- </div>  -->
+      </div>
   </div>
   </div>
 <Footer/>
@@ -83,7 +78,28 @@ export default {
     }),
     ...mapGetters(['allGoods'])
   },
+  async mounted(){
+
+
+    // let appending = function(){
+      // block.appendChild('span' , 'a')
+    // }
+
+    //     let checkout = document.createElement('script')
+    // checkout.setAttribute('src', 'https://widget.cloudpayments.ru/bundles/checkout')
+    // document.head.appendChild(checkout)
+
+    this.fetchGoods().then( this.load = true )
+
+    // let load = function(){
+    //   this.fetchGoods();
+    // } 
+
+    // load().then( appending() )
+
+  }, 
   methods: {
+    ...mapActions(['fetchGoods']),
     callRouter: function(){
       // console.log(this.$router.currentRoute._rawValue.params.id)
       // console.log(this.$router.currentRoute._rawValue.params)
@@ -109,6 +125,7 @@ export default {
   data() {
     return {
       post: '',
+      load: false
       // id: this.$router.currentRoute.params['id'],
 
     };

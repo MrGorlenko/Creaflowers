@@ -19,7 +19,13 @@ const Inventories = {
     },
     Ngoods: null
       ,
-    goods: {},
+    goods: {
+      'Категория':{
+        'goods': [
+          
+        ]
+      }
+    },
 
     addedGoods: [  ]
   },
