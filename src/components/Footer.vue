@@ -243,6 +243,7 @@ export default {
       border-radius: 10px;
       width: 44px;
       height: 44px;
+      z-index: 2;
 
       position: fixed;
       bottom: 32px;
