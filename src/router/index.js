@@ -11,6 +11,11 @@ const routes = [
     component: Home
   },
   {
+    path: '/.well-known/apple-developer-merchantid-domain-association',
+    name: 'pay',
+
+  },
+  {
     path: '/about',
     name: 'About',
     // route level code-splitting
