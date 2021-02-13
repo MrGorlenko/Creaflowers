@@ -5,7 +5,13 @@
    justify-content-between ">
 
    <div class="navigation__logo d-flex flex-lg-center flex-start">
-     <img @click='scrollTop()' src="@/assets/logo.png" alt="">
+     <a 
+     class='d-flex justify-content-center align-items-center 
+     d-lg-none navigation__wazzup' 
+     href="https://api.whatsapp.com/send?phone=79515677266">
+       <img src="@/assets/WazzupHeader.svg" alt="">
+      </a>
+     <img class="navigation__logoPic" @click='scrollTop()' src="@/assets/logo.png" alt="">
     </div>
     <div class='w-100 d-flex flex-row flex-wrap align-items-center justify-content-around'>
 
@@ -128,8 +134,25 @@ export default {
       width: 100%;
       padding:0;
       padding-top: 100px;
+      align-items: center;
+      &__wazzup{
+        position: fixed;
+        width: 52px;
+        height: 52px;
+        background: #4AAE20;
+        border: 1px solid #40A416;
+        box-shadow: 0px 6px 12px -3px rgba(221, 221, 221, 0.8);
+        border-radius: 12px;
+        right: 86px;
+      }
+      &__logoPic{
+          width:175px;
+          height: 50px;
+          display: block;
+      }
       &__logo{
         width:100%;
+        // height: 50px;
         position: fixed;
         top:0;
         left:0;
@@ -137,10 +160,13 @@ export default {
         z-index: 95;
         display: flex;
         // justify-content: start;
-        padding: 11px 0;
+        // padding: 11px 0;
         background: rgba(255, 255, 255, 1);
         backdrop-filter: blur(20px);
         // margin-bottom: 24px;
+        display: flex;
+        align-items: center;
+        padding-left: 8px;
       }
     }
   }

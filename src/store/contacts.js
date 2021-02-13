@@ -22,7 +22,7 @@ const Contacts = {
       {
         title: 'Wazzup',
         icon: require('@/assets/WazzupSide.svg'),
-        link: '#'
+        link: 'https://api.whatsapp.com/send?phone=79515677266'
       },
       {
         title: 'Insta',

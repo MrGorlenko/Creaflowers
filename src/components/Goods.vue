@@ -151,7 +151,7 @@ export default {
     }
     &__products{
       width: 100%;
-      min-height: 100vh;
+      // min-height: 100vh;
       position: relative;
       padding-top: 75px;
     }
@@ -236,6 +236,7 @@ export default {
       &_current{
         margin-right: 8px;
         font-weight: 600;
+        // margin-bottom: 0;
       }
       &_old{
         text-decoration: line-through;
@@ -303,11 +304,11 @@ export default {
         
         border-radius: 25px;
       }
-      &__cost, &__title{
-        // position: absolute;
-        line-height: 32px;
+      // &__cost, &__title{
+      //   // position: absolute;
+      //   line-height: 32px;
 
-      }
+      // }
       &__cost{
         bottom: 0px;
         color: #FFFFFF;
@@ -315,11 +316,13 @@ export default {
         font-size: 16px;
         display: flex;
         align-items: center;
+        line-height: 20px;
         // justify-content: start;
         width:100%;
         left:0;
         position: absolute;
-        padding-bottom: 40px;
+        bottom: 40px;
+        // padding-bottom: 40px;
         &_current{
                   background: #6709DE;
 border-radius: 100px;
