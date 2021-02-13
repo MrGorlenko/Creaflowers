@@ -985,5 +985,10 @@ export default {
       // color: #000;
     }
   }
+  .phone{
+    .CustomInput__input{
+      height: 17px;
+    }
+  }
 }
 </style>
