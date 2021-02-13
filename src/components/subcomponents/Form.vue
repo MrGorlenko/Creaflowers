@@ -987,7 +987,7 @@ export default {
   }
   .phone{
     .CustomInput__input{
-      height: 17px;
+      height: 20px;
     }
   }
 }
