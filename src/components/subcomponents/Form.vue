@@ -777,8 +777,11 @@ export default {
   }
 
   input {
-    padding-left: 25px;
+    padding-left: 38px;
   }
+  .CustomInput__label{
+      left: 38px;
+    }
 }
 
 .Form {
@@ -902,6 +905,7 @@ export default {
     margin-bottom: 0;
     color: #000;
     font-weight: 600;
+    padding-left: 25px;
   }
 
   &__submit {
