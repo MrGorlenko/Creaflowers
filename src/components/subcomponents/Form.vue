@@ -900,7 +900,7 @@ export default {
     padding-bottom: 0px;
     position: absolute;
     width: 25px;
-    min-height: 27px;
+    min-height: 25px;
     // background: #BDBDBD;
     margin-bottom: 0;
     color: #000;
