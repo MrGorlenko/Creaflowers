@@ -11,8 +11,7 @@ const Form = {
     address: '',
     comment: ' ',
     addressOfPickUp: [
-      'address1', 
-      'address2'
+      'Рижская площадь, 9, стр. 1, 129272', 
     ],
     PickUpAdress : ''
     // validName: false,
