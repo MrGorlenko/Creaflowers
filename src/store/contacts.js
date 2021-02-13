@@ -15,7 +15,7 @@ const Contacts = {
       {
         title: 'Instagram',
         icon: require('@/assets/Instagram.svg'),
-        link: '#'
+        link: 'http://instagram.com/creatum.flowers'
       }
     ],
     SocialSidebar: [
@@ -27,7 +27,7 @@ const Contacts = {
       {
         title: 'Insta',
         icon: require('@/assets/InsraSide.svg'),
-        link: '#'
+        link: 'http://instagram.com/creatum.flowers'
       }
     ],
     AboutUs: [

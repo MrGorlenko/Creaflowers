@@ -1,23 +1,20 @@
 <template>
-  <div v-if='BasketActive==true' 
+  <div 
    class=" d-flex basket flex-column align-items-center">
-    <img @click='closeBasket()' src="@/assets/CloseBasket.svg"
-     alt="" class="basket__close d-lg-block d-none">
-    <img @click='closeBasket()' src="@/assets/CloseBasketMobile.svg"
-     alt="" class="basket__close d-lg-none">
+   
+   <router-link class="basket__close d-block" to='/'>
+     <img @click='closeBasket()' src="@/assets/CloseBasket.svg"
+     alt="" class="basket__buttonClose d-lg-block d-none">
+     <img @click='closeBasket()' src="@/assets/CloseBasketMobile.svg"
+     alt="" class="basket__buttonClose d-lg-none">
+   </router-link>
+
+    <!-- <img @click='closeBasket()' src="@/assets/CloseBasketMobile.svg"
+     alt="" class="basket__close d-lg-none"> -->
     <p class='basket__basketTitle'>Корзина</p>
 
     <div  v-for="(good, index) in Goods" :key=good class="basket__item">
-      <!-- <div  v-for="(good) in Goods" :key=good class="basket__item"> -->
-      <!-- АКТИВИРОВАТЬ КОГДА БУДУТ ЗАБИНЖЕНЫ КАРТИНКИ  -->
         <img class='basket__img' :src="good[2]" alt="НЕТ"> 
-        <!-- АКТИВИРОВАТЬ КОГДА БУДУТ ЗАБИНЖЕНЫ КАРТИНКИ -->
-
-      <!-- ДЕАКТИВИРОВАТЬ КОГДА БУДУТ ЗАБИНЖЕНЫ КАРТИНКИ -->
-      <!-- <img class='basket__img' 
-        src="https://floristcenter.ru/image/catalog/Newphoto/Buket-iz-101-krasnoy-roz.jpg"
-        alt=""> -->
-      <!-- ДЕАКТИВИРОВАТЬ КОГДА БУДУТ ЗАБИНЖЕНЫ КАРТИНКИ -->
       <div class="basket__info d-flex flex-wrap">
         <img @click='removeFromBasket(index); removePriceFromBasket(good[1]*good[3])' src="@/assets/RemoveGood.svg" alt="" class="basket__removeItem">
         <p class='basket__title'>{{good[0]}}</p>
@@ -44,7 +41,6 @@
     </div>
     <Added/>
     <Form/>
-    <!-- <button>КУПИТЬ на сумму {{Result}} </button> -->
   </div>
 </template>
 
@@ -158,11 +154,9 @@ export default {
     }
   }
   &__item{
-    // padding: 5px;
     width:calc( #{$innerBasketWidth} - 20px);
     padding:0;
     min-height: 138px;
-    // padding: 0 10px 0 10px;
     border-bottom: 1px solid #EBEBEB;
     display: flex;
     margin-bottom: 32px;
@@ -249,8 +243,6 @@ export default {
       margin-left: 25px;
     }
     &__button{
-      // width: 30px;
-      // height: 30px;
       border-radius: 10px;
       display: flex;
       align-items: center;
@@ -265,8 +257,6 @@ export default {
     &__price{
       min-height: 5px;
       display: flex;
-      // align-items: end;
-      // justify-content: flex-end;
       align-items: center;
       margin-top: 36px;
       font-size: 17px;

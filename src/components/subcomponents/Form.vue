@@ -987,7 +987,10 @@ export default {
   }
   .phone{
     .CustomInput__input{
-      height: 25px;
+      height: 24px;
+    }
+    .CustomInput__label_focused{
+      left: 16px;
     }
   }
 }

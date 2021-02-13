@@ -13,12 +13,8 @@ const routes = [
   {
     path: '/about',
     name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
   },
-  // path
   {
     path: '/Category/:id',
     name: 'nCategory',
@@ -29,6 +25,11 @@ const routes = [
     path: '/Contacts',
     name: 'Contacts',
     component: () => import('../views/Contacts.vue')
+  },
+  {
+    path: '/Basket',
+    name: 'Basket',
+    component: () => import('../views/Basket.vue')
   }
 ]
 
@@ -36,7 +37,6 @@ const router = createRouter({
   history: createWebHistory(),
 
   routes
-  // mode: 'history'
 })
 
 export default router

@@ -7,7 +7,7 @@
     <Navigation/>
     <Modal/>
     <BasketButton/>
-    <Basket/>
+    <!-- <Basket/> -->
     <ModalAdded/>
     <ModileMobileDark/>
     <ModalAddedMobile/>
@@ -37,7 +37,7 @@ import Navigation from '@/components/Navigation.vue'
 import Goods from '@/components/Goods.vue'
 import Modal from '@/components/Modal.vue'
 import ModalAdded from '@/components/ModalAdded.vue'
-import Basket from '@/components/Basket.vue'
+// import Basket from '@/components/Basket.vue'
 import Footer from '@/components/Footer.vue'
 
 import ModalMobile from '@/components/ModalMobile.vue'
@@ -56,7 +56,7 @@ export default {
     Navigation,
     Goods,
     Modal,
-    Basket,
+    // Basket,
     ModalAdded,
     Footer,
 

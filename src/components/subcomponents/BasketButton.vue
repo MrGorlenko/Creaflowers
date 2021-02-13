@@ -1,10 +1,11 @@
 <template>
-  <div @click='openBasket()' class="BasketIcon d-lg-block">
+  <!-- <div @click='openBasket()' class="BasketIcon d-lg-block"> -->
+  <router-link to='/Basket'  class="BasketIcon d-lg-block">
     <div v-if="goodsCount>0" class="BasketIcon__count">
       {{goodsCount}}
     </div>
     <img src="@/assets/Basket.svg" alt="">
-  </div>
+  </router-link>
 </template>
 
 <script>
