@@ -126,12 +126,20 @@ const Inventories = {
       async function fn(){
         state.goods = goods
       }
+      // function img(){
+      //   state.load = false
+      // }
       // fn()
+      
 
       fn().then(setTimeout( () => state.load = false , 1500))
 
       // await new Promise((resolve, reject) => setTimeout(loader(), 4500))
     },
+
+    LOADER_OFF(state){
+      state.load = false
+    }
 
 
 
@@ -153,19 +161,6 @@ const Inventories = {
       ctx.commit('UPDATE_ALL_GOODS', goods)
     },
 
-    // async Pixel(ctx){
-    //   !function(f,b,e,v,n,t,s)
-    //   {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    //   n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    //   if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    //   n.queue=[];t=b.createElement(e);t.async=!0;
-    //   t.src=v;s=b.getElementsByTagName(e)[0];
-    //   s.parentNode.insertBefore(t,s)}(window, document,'script',
-    //   'https://connect.facebook.net/en_US/fbevents.js');
-    //   fbq('init', '3739894582790910');
-    //   fbq('track', 'PageView');
-
-    // }
   },
   getters: {
     allGoods(state){

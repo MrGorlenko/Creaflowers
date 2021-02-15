@@ -8,9 +8,9 @@ const Contacts = {
     ],
     SocialFooter: [
       {
-        title: 'Facebook',
-        icon: require('@/assets/Facebook.svg'),
-        link: '#'
+        title: 'Telegram',
+        icon: require('@/assets/telegram.svg'),
+        link: 'tg://resolve?domain=creatumtg'
       },
       {
         title: 'Instagram',
