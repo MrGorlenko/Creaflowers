@@ -77,7 +77,6 @@ export default {
     this.fetchGoods();
   },
   mounted() {
-  const res = fetch('https://0f66900a38914c50a059c923cc92dcd3.app.rstudio.cloud/p/c7e7feef/openapi.json');
     !function (f, b, e, v, n, t, s) {
       if (f.fbq) return;
       n = f.fbq = function () {
